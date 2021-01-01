@@ -9,7 +9,6 @@
 }
 
 h1 {
-    top: 8px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 36px;
     font-stretch: expanded;
@@ -74,10 +73,10 @@ a {
     }
 
 .container{
-    left: 8px;
     display: flex;
     flex-direction: column;
 }
 .item{
+    padding: 6px;
     max-width: 45%;
 }
