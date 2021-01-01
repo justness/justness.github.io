@@ -71,3 +71,11 @@ a {
         background: rgb(255, 236, 169);
         border-radius: 10px;
     }
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.item{
+    
+}
