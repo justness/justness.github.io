@@ -1,11 +1,25 @@
 ﻿html {
     height: 100%;
-    background-color: #434655;
-    background-image: url("/images/cabinet.png");
+    background-color: black;
+    background-image: url("/images/");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     cursor: url("/images/cursor_norm.png"),auto;
+}
+
+h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-stretch: expanded;
+    color: white;
+    line-height: 0px;
+}
+p {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 16px;
+    font-stretch: expanded;
+    color: white;
 }
 
 body {
@@ -49,7 +63,6 @@ a {
 }
 
 #iconbar {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    position: absolute;
+    bottom: 5%;
 }
