@@ -29,6 +29,11 @@ a {
     color: #5c80bc;
     text-decoration: none;
     cursor: url("/images/cursor_norm.png"),auto;
+    transition: 0.3s;
+    position: absolute;
+    right: 0px;
+    max-width: 16px;
+    overflow: hidden;
 }
 
     a:hover {
@@ -38,7 +43,15 @@ a {
         opacity: 1;
         text-decoration: none;
         cursor: url("/images/cursor_hover.png"),auto;
+        position: absolute;
+        max-width: 36px;
     }
+
+#iconbar {
+    position: absolute;
+    top: 15%;
+    right: 0;
+}
 
 ::-webkit-scrollbar {
     width: 5px;
@@ -58,11 +71,3 @@ a {
         background: rgb(255, 236, 169);
         border-radius: 10px;
     }
-
-#title {
-}
-
-#iconbar {
-    position: absolute;
-    bottom: 5%;
-}
