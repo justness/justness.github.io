@@ -1,0 +1,55 @@
+﻿html {
+    height: 100%;
+    background-color: #434655;
+    background-image: url("/images/cabinet.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: url("/images/cursor_norm.png"),auto;
+}
+
+body {
+}
+
+a {
+    color: #5c80bc;
+    text-decoration: none;
+    cursor: url("/images/cursor_norm.png"),auto;
+}
+
+    a:hover {
+        -webkit-transition: all 1s ease;
+        transition: all 1s ease;
+        color: #56cdea;
+        opacity: 1;
+        text-decoration: none;
+        cursor: url("/images/cursor_hover.png"),auto;
+    }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #5c80bc;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E8C54C;
+    border-radius: 10px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(255, 236, 169);
+        border-radius: 10px;
+    }
+
+#title {
+}
+
+#iconbar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
