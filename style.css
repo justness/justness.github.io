@@ -1,4 +1,6 @@
-﻿html {
+﻿/*   */
+
+html {
     height: 100%;
     background-color: black;
     background-image: url("/images/");
@@ -9,6 +11,7 @@
 }
 
 h1 {
+    margin: 12px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 36px;
     font-stretch: expanded;
@@ -23,16 +26,20 @@ p {
 }
 
 body {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */  
 }
 
 a {
     color: #5c80bc;
     text-decoration: none;
     cursor: url("/images/cursor_norm.png"),auto;
-    transition: 0.3s;
+    transition: 0.2s;
     position: absolute;
     right: 0px;
-    max-width: 16px;
+    max-width: 30px;
     overflow: hidden;
 }
 
@@ -44,39 +51,63 @@ a {
         text-decoration: none;
         cursor: url("/images/cursor_hover.png"),auto;
         position: absolute;
-        max-width: 36px;
+        max-width: 48px;
     }
+
+input[type=text] {
+    max-width: none;
+    border: none;
+    background-color: black;
+    color: #56cdea;
+    caret-color: #56cdea;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 24px;
+}
+    input[type=text]:focus{
+        outline: none;
+    }
+
+/* # */
 
 #iconbar {
     position: absolute;
-    top: 15%;
+    bottom: 15%;
     right: 0;
 }
+
+/* . */
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.item {
+    padding: 6px;
+    max-width: 75%;
+}
+
+/* :: */
 
 ::-webkit-scrollbar {
     width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #5c80bc;
+    background: #5c80bc; /* TODO: Update colour palette. */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #E8C54C;
+    background: #E8C54C; /* TODO: Update colour palette. */
     border-radius: 10px;
 }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: rgb(255, 236, 169);
+        background: rgb(255, 236, 169); /* TODO: Update colour palette. */
         border-radius: 10px;
     }
 
-.container{
-    display: flex;
-    flex-direction: column;
-}
-.item{
-    padding: 6px;
-    max-width: 45%;
-}
+::selection {
+    color: white;
+    background: #00ccff;
+    }
