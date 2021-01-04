@@ -91,7 +91,6 @@ input[type=text] {
 }
 #settings-option {
     float: right;
-    margin-right: 16px;
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
     color: white;
@@ -105,6 +104,9 @@ input[type=text] {
         color: #56cdea;
         cursor: url("/images/cursor_hover.png"),auto;
     }
+#settings-padding{
+    background-color: black;
+}
 
 #iconbar {
     position: absolute;

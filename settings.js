@@ -3,7 +3,7 @@ function toggleMode(){
     var allImages = document.getElementsByTagName("img");
     if (document.body.style.backgroundColor === "white"){
         for (var i=0, max=all.length; i < max; i++) {
-            if (all[i].id.toLowerCase() === "settings-button" || all[i].id.toLowerCase() === "settings-option" || all[i].id.toLowerCase() === "settings") continue;
+            if (all[i].id.toLowerCase() === "settings-button" || all[i].id.toLowerCase() === "settings-option" || all[i].id.toLowerCase() === "settings-padding" || all[i].id.toLowerCase() === "settings") continue;
             all[i].style.color = "white";
             all[i].style.backgroundColor = "black";
         }
@@ -15,7 +15,7 @@ function toggleMode(){
     }
     else {
         for (var i=0, max=all.length; i < max; i++) {
-            if (all[i].id.toLowerCase() === "settings-button" || all[i].id.toLowerCase() === "settings-option" || all[i].id.toLowerCase() === "settings") continue;
+            if (all[i].id.toLowerCase() === "settings-button" || all[i].id.toLowerCase() === "settings-option" || all[i].id.toLowerCase() === "settings-padding" || all[i].id.toLowerCase() === "settings") continue;
             all[i].style.color = "black";
             all[i].style.backgroundColor = "white";
         }

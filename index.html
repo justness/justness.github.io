@@ -18,28 +18,32 @@
     <input class="item" type="text" class="line" maxlength="130" autofocus>
 
     <div id="settings">
-        <button id="settings-button" onclick=showSettings()> SETTINGS </button><br /><br />
+        <button id="settings-button" onclick=showSettings()> SETTINGS </button><br />
+        <div id="settings-padding" style="padding: 18px"></div>
         <div id="settings-options">
             <button id="settings-option" onclick=toggleMode()> Light/Dark Mode </button><br />
-            <button id="settings-option" onclick=changeFontSize(2)> Increase Font Size </button><br />
-            <button id="settings-option" onclick=changeFontSize(-2)> Decrease Font Size </button>
+            <button id="settings-option" onclick=changeFontSize(4)> Font Size &uarr; </button><br />
+            <button id="settings-option" onclick=changeFontSize(-4)> Font Size &darr; </button><br />
         </div>
     </div>
     <div id="iconbar">
-        <!-- TODO: Invert icon colours on light/dark toggle. -->
-        <!-- TODO: Change spacing to not be reliant on font size/<br />. -->
+        <!-- TODO: Make CSS tag for spacer divs. -->
         <a href="https://www.linkedin.com/in/v-chu/" target="_blank">
             <img src="/images/logos/linkedin_light.png" alt="LinkedIn" width="48" height="48">
-        </a><br /><br /><br />
+        </a>
+        <div style="padding: 28px"></div>
         <a href="https://justness.itch.io/" target="_blank">
             <img src="/images/logos/itch-io_light.png" alt="itch.io" width="48" height="48">
-        </a><br /><br /><br />
+        </a>
+        <div style="padding: 28px"></div>
         <a href="https://github.com/justness" target="_blank">
             <img src="/images/logos/github_light.png" alt="GitHub" width="48" height="48">
-        </a><br /><br /><br />
+        </a>
+        <div style="padding: 28px"></div>
         <a href="https://twitter.com/jjustness" target="_blank">
             <img src="/images/logos/twitter_light.png" alt="Twitter" width="48" height="48">
-        </a><br /><br /><br />
+        </a>
+        <div style="padding: 28px"></div>
         <a href="vanessa.chu@mail.mcgill.ca" target="_blank">
             <img src="/images/logos/email_light.png" alt="Email" width="48" height="48">
         </a>
