@@ -4,6 +4,8 @@
     <title>&#128187</title>
     <link rel="stylesheet" href="style.css">
     <script src="scramble.js"></script>
+    <script src="showSettings.js"></script>
+    <script src="settings.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&family=IBM+Plex+Mono:wght@100&display=swap" rel="stylesheet">
 </head>
 <body class="container">
@@ -12,14 +14,22 @@
         document.getElementById('title').onmouseover = function() {scramble()};
         document.getElementById('title').onmouseout = function() {unscramble()};
     </script>
-    <p class="item">Hello! I'm Ness, a fourth year undergraduate computer science/biology student at McGill University. I'm passionate about video game development, ecological interactions, and designing for accessibility!</p>
+    <p class="item">I'm Ness, a fourth year undergraduate computer science/biology student at McGill University. I'm passionate about video game development, ecological interactions, and designing for accessibility!</p>
     <input class="item" type="text" class="line" maxlength="130" autofocus>
-</body>
-<body>
+
+    <div id="settings">
+        <button id="settings-button" onclick=showSettings()> SETTINGS </button><br /><br />
+        <div id="settings-options">
+            <button id="settings-option" onclick=toggleMode()> Light/Dark Mode </button><br />
+            <button id="settings-option" onclick=changeFontSize(2)> Increase Font Size </button><br />
+            <button id="settings-option" onclick=changeFontSize(-2)> Decrease Font Size </button>
+        </div>
+    </div>
     <div id="iconbar">
         <a href="https://www.linkedin.com/in/v-chu/" target="_blank">
             <img src="/images/logos/linkedin.png" alt="LinkedIn" width="48" height="48">
         </a><br /><br /><br />
+        <!-- TODO: Change spacing to not be reliant on font size/<br />. -->
         <a href="https://justness.itch.io/" target="_blank">
             <img src="/images/logos/itch-io.png" alt="itch.io" width="48" height="48">
         </a><br /><br /><br />

@@ -2,18 +2,12 @@
 
 html {
     height: 100%;
-    background-color: black;
-    background-image: url("/images/");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
     cursor: url("/images/cursor_norm.png"),auto;
 }
 
 h1 {
-    margin: 12px;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 36px;
+    font-size: 48px;
     font-stretch: expanded;
     color: white;
     line-height: 0px;
@@ -30,19 +24,20 @@ body {
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;          /* Likely future */  
+    margin: 12px;
+    background-color: black;
 }
 
 a {
     color: #5c80bc;
     text-decoration: none;
     cursor: url("/images/cursor_norm.png"),auto;
-    transition: 0.2s;
+    transition: 0.5s;
     position: absolute;
     right: 0px;
     max-width: 30px;
     overflow: hidden;
 }
-
     a:hover {
         -webkit-transition: all 1s ease;
         transition: all 1s ease;
@@ -68,6 +63,47 @@ input[type=text] {
     }
 
 /* # */
+
+#settings{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+#settings-button {
+    position: absolute;
+    right: 8px;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 32px;
+    color: white;
+    background-color: black;
+    border: none;
+    outline: none;
+}
+    #settings-button:hover {
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        color: #56cdea;
+        cursor: url("/images/cursor_hover.png"),auto;
+    }
+#settings-options{
+    display: none;
+}
+#settings-option {
+    float: right;
+    margin-right: 16px;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 24px;
+    color: white;
+    background-color: black;
+    border: none;
+    outline: none;
+}
+    #settings-option:hover {
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        color: #56cdea;
+        cursor: url("/images/cursor_hover.png"),auto;
+    }
 
 #iconbar {
     position: absolute;
@@ -103,11 +139,11 @@ input[type=text] {
 }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: rgb(255, 236, 169); /* TODO: Update colour palette. */
+        background:#ffe897; /* TODO: Update colour palette. */
         border-radius: 10px;
     }
 
 ::selection {
     color: white;
-    background: #00ccff;
+    background: #56cdea;
     }
