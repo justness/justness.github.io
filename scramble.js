@@ -1,3 +1,5 @@
+var scrambleRepeater;
+
 function scramble(){
     var title = new String(document.getElementById('title').innerText);
     var temp = new String(title);
@@ -11,8 +13,11 @@ function scramble(){
         }
     }
     document.getElementById('title').innerHTML = temp;
+    scrambleRepeater = setTimeout(scramble, 100);
 }
 function unscramble(){
+    clearTimeout(scrambleRepeater);
+
     var title = new String(document.getElementById('title').innerText);
     var temp = new String(title);
     for (var i=0;i<title.length-1;i++){

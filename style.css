@@ -16,7 +16,7 @@ p {
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
     font-stretch: expanded;
-    color: white;
+    color: rgb(230, 230, 230);
 }
 
 body {
@@ -26,6 +26,12 @@ body {
     user-select: none;          /* Likely future */
     margin: 12px;
     background-color: black;
+
+    background-image: url('/images/polaroids.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 400px 200px;
+    background-position: 90% 105%;
 }
 
 a {
@@ -75,7 +81,7 @@ input[type=text] {
     right: 8px;
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 32px;
-    color: white;
+    color: rgb(230, 230, 230);
     background-color: black;
     border: none;
     outline: none;
@@ -93,7 +99,7 @@ input[type=text] {
     float: right;
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
-    color: white;
+    color: rgb(230, 230, 230);
     background-color: black;
     border: none;
     outline: none;
@@ -121,7 +127,6 @@ input[type=text] {
     flex-direction: column;
 }
 .item {
-    padding: 6px;
     max-width: 75%;
 }
 
