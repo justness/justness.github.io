@@ -7,13 +7,13 @@ html {
 
     background-image: url('/images/polaroids.png');
     background-repeat: no-repeat;
-    background-size: 400px 200px;
-    background-position: 90% 105%;
+    background-size: 600px 300px;
+    background-position: 95% 105%;
 }
 
 h1 {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 48px;
+    font-size: 36px;
     font-stretch: expanded;
     color: white;
     line-height: 0px;
@@ -23,6 +23,11 @@ p {
     font-size: 24px;
     font-stretch: expanded;
     color: rgb(230, 230, 230);
+}
+label{
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 24px;
+    color: #5c80bc;
 }
 
 body {
@@ -54,8 +59,8 @@ a {
         position: absolute;
         max-width: 48px;
     }
-
 input[type=text] {
+    width: 70%;
     max-width: none;
     border: none;
     background-color: black;
@@ -100,7 +105,7 @@ input[type=text] {
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
     color: rgb(230, 230, 230);
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     border: none;
     outline: none;
 }
@@ -128,6 +133,10 @@ input[type=text] {
 }
 .item {
     max-width: 75%;
+}
+
+.blue-text{
+    color: #5c80bc; /* TODO: This is not working to override p colour. */
 }
 
 /* :: */

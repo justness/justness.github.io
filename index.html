@@ -3,22 +3,28 @@
     <meta charset="UTF-8">
     <title>&#128187</title>
     <link rel="stylesheet" href="style.css">
+    <script src="inputLog.js"></script>
     <script src="scramble.js"></script>
-    <script src="showSettings.js"></script>
     <script src="settings.js"></script>
+    <script src="showSettings.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&family=IBM+Plex+Mono:wght@100&display=swap" rel="stylesheet">
 </head>
 <body class="container">
-    <h1 id="title" class="item" aria-label="hello world">> hello world.</h1>
+    <h1 id="title" class="item" aria-label="hello world">> SUBJECT NAME: ness</h1>
     <script>
         document.getElementById('title').onmouseover = function() {scramble()};
         document.getElementById('title').onmouseout = function() {unscramble()};
     </script>
-    <p class="item" style="margin-left:20px">NAME: ness <br />
-        SPECIMEN: a fourth year undergraduate computer science/biology student at McGill University <br />
-        INTERESTS: [-gd <u>video game development</u>] [-ei <u>ecological interactions</u>] [-ux <u>user-centric design</u>]</p>
-    <p class="item"></p>
-    <input class="item" type="text" class="line" maxlength="130" autofocus>
+    <p class="item" style="margin-left:20px"> > <blue-text style="color: #5c80bc">SPECIMEN</blue-text>: a fourth year undergraduate computer science/biology student at McGill University <br />
+        > <blue-text style="color: #5c80bc">STATUS</blue-text>: incoming summer 2021 tools programming intern @ ubisoft montreal <br />
+        > <blue-text style="color: #5c80bc">LANGUAGES</blue-text>: [-en english] [-fr french] <br />
+        > <blue-text style="color: #5c80bc">INTERESTS</blue-text>: [-gd video game development] [-ei ecological interactions] [-ux user-centric design]</p>
+    <p class="item" id="log"> </p>
+    <form autocomplete="off" action="/log-handling" onsubmit="return updateLog()" method="post">
+        <label for="user-type">USER ></label>
+        <input autocomplete="off" class="item" id="user-type" type="text" maxlength="130" autofocus>
+        <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+    </form>
 
     <div id="settings">
         <button id="settings-button" onclick=showSettings()> SETTINGS </button><br />
