@@ -3,6 +3,12 @@
 html {
     height: 100%;
     cursor: url("/images/cursor_norm.png"),auto;
+    background-color: black;
+
+    background-image: url('/images/polaroids.png');
+    background-repeat: no-repeat;
+    background-size: 400px 200px;
+    background-position: 90% 105%;
 }
 
 h1 {
@@ -26,12 +32,6 @@ body {
     user-select: none;          /* Likely future */
     margin: 12px;
     background-color: black;
-
-    background-image: url('/images/polaroids.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 400px 200px;
-    background-position: 90% 105%;
 }
 
 a {
