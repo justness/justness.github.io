@@ -1,9 +1,17 @@
 ﻿/*   */
 
+:root {
+    --basic: white;
+    --basic-alt: rgb(230, 230, 230);
+    --bkg: black;
+    --accent: rgb(232,197,76);
+    --accent-highlighted: rgb(255,232,151);
+}
+
 html {
     height: 100%;
     cursor: url("/images/cursor_norm.png"),auto;
-    background-color: black;
+    background-color: var(--bkg);
 
     background-image: url('/images/polaroids.png');
     background-repeat: no-repeat;
@@ -15,19 +23,19 @@ h1 {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 36px;
     font-stretch: expanded;
-    color: white;
+    color: var(--basic);
     line-height: 0px;
 }
 p {
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
     font-stretch: expanded;
-    color: rgb(230, 230, 230);
+    color: var(--basic-alt);
 }
 label{
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
-    color: #5c80bc;
+    color: var(--accent);
 }
 
 body {
@@ -36,11 +44,11 @@ body {
     -ms-user-select: none;      /* IE 10+ */
     user-select: none;          /* Likely future */
     margin: 12px;
-    background-color: black;
+    background-color: transparent;
 }
 
 a {
-    color: #5c80bc;
+    color: var(--accent);
     text-decoration: none;
     cursor: url("/images/cursor_norm.png"),auto;
     transition: 0.5s;
@@ -52,7 +60,7 @@ a {
     a:hover {
         -webkit-transition: all 1s ease;
         transition: all 1s ease;
-        color: #56cdea;
+        color: var(--accent-highlighted);
         opacity: 1;
         text-decoration: none;
         cursor: url("/images/cursor_hover.png"),auto;
@@ -62,12 +70,11 @@ a {
 input[type=text] {
     width: 70%;
     max-width: none;
-    border: none;
-    background-color: black;
-    color: #56cdea;
-    caret-color: #56cdea;
+    background-color: var(--bkg);
+    color: var(--accent-highlighted);
+    caret-color: var(--accent-highlighted);
     font-family: 'Darker Grotesque', sans-serif;
-    font-size: 24px;
+    font-size: 18px;
 }
     input[type=text]:focus{
         outline: none;
@@ -76,53 +83,55 @@ input[type=text] {
 /* # */
 
 #settings{
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: black;
+    border:solid;
+    border-width:1px;
+    border-color:var(--basic);
+    position:fixed;
+    top: 16px;
+    right: 16px;
+    min-height:36px;
+    width: 150px;
+    text-align: center;
 }
 #settings-button {
-    position: absolute;
-    right: 8px;
     font-family: 'Darker Grotesque', sans-serif;
-    font-size: 32px;
-    color: rgb(230, 230, 230);
-    background-color: black;
+    font-size: 24px;
+    color: var(--basic);
+    background-color: transparent;
     border: none;
-    outline: none;
+    width:inherit;
+    height: 36px;
 }
     #settings-button:hover {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
-        color: #56cdea;
+        color: var(--accent-highlighted);
         cursor: url("/images/cursor_hover.png"),auto;
     }
 #settings-options{
     display: none;
 }
 #settings-option {
-    float: right;
+    margin-top:4px;
+    margin-bottom:4px;
     font-family: 'Darker Grotesque', sans-serif;
-    font-size: 24px;
-    color: rgb(230, 230, 230);
-    background-color: rgb(0, 0, 0);
+    font-size: 18px;
+    color: var(--basic);
+    background-color: transparent;
     border: none;
-    outline: none;
 }
     #settings-option:hover {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
-        color: #56cdea;
+        color: var(--accent-highlighted);
         cursor: url("/images/cursor_hover.png"),auto;
     }
-#settings-padding{
-    background-color: black;
-}
 
 #iconbar {
     position: absolute;
-    bottom: 15%;
+    bottom: 25%;
     right: 0;
+    background-color: transparent;
 }
 
 /* . */
@@ -136,7 +145,7 @@ input[type=text] {
 }
 
 .blue-text{
-    color: #5c80bc; /* TODO: This is not working to override p colour. */
+    color: var(--accent); /* TODO: This is not working to override p colour. */
 }
 
 /* :: */
@@ -146,7 +155,7 @@ input[type=text] {
 }
 
 ::-webkit-scrollbar-track {
-    background: #5c80bc; /* TODO: Update colour palette. */
+    background: var(--accent); /* TODO: Update colour palette. */
     border-radius: 10px;
 }
 
@@ -161,6 +170,6 @@ input[type=text] {
     }
 
 ::selection {
-    color: white;
-    background: #56cdea;
+    color: var(--basic);
+    background: var(--accent-highlighted);
     }

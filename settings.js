@@ -1,43 +1,22 @@
+var lightmode = false;
+
 function toggleMode(){
-    var all = document.getElementsByTagName("*");
-    var allImages = document.getElementsByTagName("img");
-    if (document.body.style.backgroundColor === "white"){
-        for (var i=0, max=all.length; i < max; i++) {
-            if (all[i].id.toLowerCase() === "settings-button" || all[i].id.toLowerCase() === "settings-option" || all[i].id.toLowerCase() === "settings-padding" || all[i].id.toLowerCase() === "settings") continue;
-            
-            if (all[i].tagName === "BLUE-TEXT" || all[i].tagName === "LABEL") all[i].style.color = "#5c80bc";
-            else if (all[i].tagName === "P") all[i].style.color = "rgb(230, 230, 230)";
-            else all[i].style.color = "white";
-            all[i].style.backgroundColor = "black";
-        }
-        for (var i=0, max=allImages.length; i < max; i++) {
-            allImages[i].transition = "0s";
-            allImages[i].src = allImages[i].src.replace("_dark.png", "") + "_light.png";
-            allImages[i].transition = "0.5s";
-        }
+    var images = document.getElementsByTagName("IMG");
+    if (lightmode){ 
+        document.documentElement.style.setProperty('--basic',"white");
+        document.documentElement.style.setProperty('--basic-alt', "rgb(230,230,230)");
+        document.documentElement.style.setProperty('--bkg',"black");
+        document.documentElement.style.setProperty('--accent',"rgb(232,197,76)");
+        document.documentElement.style.setProperty('--accent-highlighted',"rgb(255,232,151)");
+        for (var i = 0; i < images.length; i++){ images[i].style.filter = "invert(0)"; }
     }
     else {
-        for (var i=0, max=all.length; i < max; i++) {
-            if (all[i].id.toLowerCase() === "settings-button" || all[i].id.toLowerCase() === "settings-option" || all[i].id.toLowerCase() === "settings-padding" || all[i].id.toLowerCase() === "settings") continue;
-            
-            if (all[i].tagName === "BLUE-TEXT" || all[i].tagName === "LABEL") all[i].style.color = "#5c80bc";
-            else if (all[i].tagName === "P") all[i].style.color = "rgb(25, 25, 25)";
-            else all[i].style.color = "black";
-            all[i].style.backgroundColor = "white";
-        }
-        for (var i=0, max=allImages.length; i < max; i++) {
-            allImages[i].transition = "0s";
-            allImages[i].src = allImages[i].src.replace("_light.png", "") + "_dark.png";
-            allImages[i].transition = "0.5s";
-        }
+        document.documentElement.style.setProperty('--basic',"black");
+        document.documentElement.style.setProperty('--basic-alt', "rgb(90,90,90)");
+        document.documentElement.style.setProperty('--bkg',"white");
+        document.documentElement.style.setProperty('--accent',"rgb(92,128,188)");
+        document.documentElement.style.setProperty('--accent-highlighted',"rgb(86,205,234)");
+        for (var i = 0; i < images.length; i++){ images[i].style.filter = "invert(1)"; }
     }
-}
-
-function changeFontSize(value){
-    var all = document.getElementsByTagName("*");
-    for (var i=0, max=all.length; i < max; i++) {
-        var currSize = window.getComputedStyle(all[i]).fontSize.replace("px", "");
-        var newSize = parseFloat(currSize) + parseFloat(value);
-        all[i].style.fontSize = newSize + "px";
-    }
+    lightmode = !lightmode;
 }
