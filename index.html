@@ -20,13 +20,6 @@
     > <blue-text style="color: var(--accent)">STATUS</blue-text>: summer 2021 tools programming intern @ ubisoft montreal <br />
     > <blue-text style="color: var(--accent)">LANGUAGES</blue-text>: [-en english] [-fr french] <br />
     > <blue-text style="color: var(--accent)">INTERESTS</blue-text>: [-gd video game development] [-ei ecological interactions] [-ux user-centric design]</p>
-    <script>
-        var items = document.getElementsByTagName('blue-text');
-        for (var i = 0; i < items.length; i++){
-            items[i].onmouseover = function() {scramble()};
-            items[i].onmouseout = function() {unscramble()};
-        }
-    </script>
     <p class="item" id="log"> </p>
     <form autocomplete="off" action="/log-handling" onsubmit="return updateLog()" method="post">
         <label for="user-type">USER ></label>
