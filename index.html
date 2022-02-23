@@ -8,50 +8,56 @@
     <script src="settings.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&family=IBM+Plex+Mono:wght@100&display=swap" rel="stylesheet">
 </head>
-<body class="container">
-    <h1 id="title" class="item" aria-label="hello world">> SUBJECT NAME: ness</h1>
-    <script>
-        var title = document.getElementById('title');
-        title.onmouseover = function() {scramble()};
-        title.onmouseout = function() {unscramble()};
-    </script>
-    <p class="item" style="margin-left:20px"> > <blue-text style="color: var(--accent)">SPECIMEN</blue-text>: a fourth year undergraduate computer science/biology student at McGill University <br />
-    > <blue-text style="color: var(--accent)">STATUS</blue-text>: summer 2021 tools programming intern @ ubisoft montreal <br />
-    > <blue-text style="color: var(--accent)">LANGUAGES</blue-text>: [-en english] [-fr french] <br />
-    > <blue-text style="color: var(--accent)">INTERESTS</blue-text>: [-gd video game development] [-ei ecological interactions] [-ux user-centric design]</p>
-    <p class="item" id="log"> </p>
-    <form autocomplete="off" action="/log-handling" onsubmit="return updateLog()" method="post">
-        <label for="user-type">USER ></label>
-        <input autocomplete="off" class="item" id="user-type" type="text" maxlength="130" placeholder="e.g. ness gd" autofocus style="border:1px solid var(--basic);">
-        <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
-    </form>
-
-    <div id="settings">
-        <button id="settings-button" onclick=showSettings()> SETTINGS </button><br />
-        <div id="settings-options">
-            <button id="settings-option" onclick=toggleMode() style="margin-bottom:12px">Light/Dark Mode</button><br />
+<body class="container" style="margin:0; padding:0">
+    <div>
+        <div style="display:flex">
+            <div style="background-color:var(--basic); height:100vh">
+                <div id="resume-pdf" style="display:none">
+                    <iframe type="application/pdf" src="documents/NessChu_Resume.pdf#zoom=fit" frameborder="0" style="display:flex; margin:2vh; width:75vh; height:96vh"></iframe>
+                </div>
+            </div>
+            <div style="flex:50%; margin-left:1vh">
+                <h1 id="title" class="item" aria-label="hello world">> ness chu</h1>
+                <p style="margin-top:0">computer science // biology // event organization</p>
+                <!--<script>
+                    var title = document.getElementById('title');
+                    title.onmouseover = function() {scramble()};
+                    title.onmouseout = function() {unscramble()};
+                </script>-->
+                <button class="dropdown-button" onclick="showContent('resume-pdf')" style="margin-left:2vh; border:solid; border-width:1px; border-color:var(--basic)">resume</button>
+            </div>
+            <div style="flex:50%">
+                <p></p>
+            </div>
         </div>
-    </div>
-    <div id="iconbar">
-        <!-- TODO: Make CSS tag for spacer divs. -->
-        <a href="https://www.linkedin.com/in/v-chu/" target="_blank">
-            <img src="/images/logos/linkedin.png" alt="LinkedIn" width="48" height="48">
-        </a>
-        <div style="padding: 28px"></div>
-        <a href="https://justness.itch.io/" target="_blank">
-            <img src="/images/logos/itch-io.png" alt="itch.io" width="48" height="48">
-        </a>
-        <div style="padding: 28px"></div>
-        <a href="https://github.com/justness" target="_blank">
-            <img src="/images/logos/github.png" alt="GitHub" width="48" height="48">
-        </a>
-        <div style="padding: 28px"></div>
-        <a href="https://twitter.com/jjustness" target="_blank">
-            <img src="/images/logos/twitter.png" alt="Twitter" width="48" height="48">
-        </a>
-        <div style="padding: 28px"></div>
-        <a href="vanessa.chu@mail.mcgill.ca" target="_blank">
-            <img src="/images/logos/email.png" alt="Email" width="48" height="48">
-        </a>
+
+        <div id="settings">
+            <button class="dropdown-button" onclick="showContent('settings-options')">⚙️</button><br />
+            <div id="settings-options" style="display:none">
+                <button id="display-option" onclick=toggleMode() style="margin-bottom:12px">☀️</button><br />
+            </div>
+        </div>
+        <div id="iconbar">
+            <!-- TODO: Make CSS tag for spacer divs. -->
+            <a href="https://www.linkedin.com/in/v-chu/" target="_blank">
+                <img src="/images/logos/linkedin.png" alt="LinkedIn" width="48" height="48">
+            </a>
+            <div style="padding: 28px"></div>
+            <a href="https://justness.itch.io/" target="_blank">
+                <img src="/images/logos/itch-io.png" alt="itch.io" width="48" height="48">
+            </a>
+            <div style="padding: 28px"></div>
+            <a href="https://github.com/justness" target="_blank">
+                <img src="/images/logos/github.png" alt="GitHub" width="48" height="48">
+            </a>
+            <div style="padding: 28px"></div>
+            <a href="https://twitter.com/jjustness" target="_blank">
+                <img src="/images/logos/twitter.png" alt="Twitter" width="48" height="48">
+            </a>
+            <div style="padding: 28px"></div>
+            <a href="vanessa.chu@mail.mcgill.ca" target="_blank">
+                <img src="/images/logos/email.png" alt="Email" width="48" height="48">
+            </a>
+        </div>
     </div>
 </body>

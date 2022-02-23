@@ -12,11 +12,6 @@ html {
     height: 100%;
     cursor: url("/images/cursor_norm.png"),auto;
     background-color: var(--bkg);
-
-    background-image: url('/images/polaroids.png');
-    background-repeat: no-repeat;
-    background-size: 600px 300px;
-    background-position: 95% 105%;
 }
 
 h1 {
@@ -90,28 +85,11 @@ input[type=text] {
     top: 16px;
     right: 16px;
     min-height:36px;
-    width: 150px;
+    width: 100px;
     text-align: center;
 }
-#settings-button {
-    font-family: 'Darker Grotesque', sans-serif;
-    font-size: 24px;
-    color: var(--basic);
-    background-color: transparent;
-    border: none;
-    width:inherit;
-    height: 36px;
-}
-    #settings-button:hover {
-        -webkit-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-        color: var(--accent-highlighted);
-        cursor: url("/images/cursor_hover.png"),auto;
-    }
-#settings-options{
-    display: none;
-}
-#settings-option {
+
+#display-option {
     margin-top:4px;
     margin-bottom:4px;
     font-family: 'Darker Grotesque', sans-serif;
@@ -119,8 +97,9 @@ input[type=text] {
     color: var(--basic);
     background-color: transparent;
     border: none;
+    width: 100px;
 }
-    #settings-option:hover {
+    #display-option:hover {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
         color: var(--accent-highlighted);
@@ -128,8 +107,8 @@ input[type=text] {
     }
 
 #iconbar {
-    position: absolute;
-    bottom: 25%;
+    position: fixed;
+    bottom: 15%;
     right: 0;
     background-color: transparent;
 }
@@ -148,9 +127,26 @@ input[type=text] {
     color: var(--accent); /* TODO: This is not working to override p colour. */
 }
 
+.dropdown-button {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 24px;
+    color: var(--basic);
+    background-color: transparent;
+    border: none;
+    height:inherit;
+    padding: 8px;
+}
+    .dropdown-button:hover {
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        color: var(--accent-highlighted);
+        cursor: url("/images/cursor_hover.png"),auto;
+    }
+
 /* :: */
 
 ::-webkit-scrollbar {
+    height: 5px;
     width: 5px;
 }
 
