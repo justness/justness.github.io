@@ -10,7 +10,7 @@
 
 html {
     height: 100%;
-    cursor: url("/images/cursor_norm.png"),auto;
+    cursor: url("/images/cursor_norm.png"),auto; /* Update graphic for better aim. */
     background-color: var(--bkg);
 }
 
@@ -62,25 +62,28 @@ a {
         position: absolute;
         max-width: 48px;
     }
-input[type=text] {
-    width: 70%;
-    max-width: none;
-    background-color: var(--bkg);
-    color: var(--accent-highlighted);
-    caret-color: var(--accent-highlighted);
+
+button {
+    border-radius: 10px;
+    min-height:36px;
+    min-width:36px;
     font-family: 'Darker Grotesque', sans-serif;
-    font-size: 18px;
+    font-size: 24px;
+    color: var(--basic);
+    background-color: transparent;
+    border: none;
 }
-    input[type=text]:focus{
-        outline: none;
+    button:hover {
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        color: var(--accent-highlighted);
+        cursor: url("/images/cursor_hover.png"),auto;
+        background-color: gray;
     }
 
 /* # */
 
 #settings{
-    border:solid;
-    border-width:1px;
-    border-color:var(--basic);
     position:fixed;
     top: 16px;
     right: 16px;
@@ -89,28 +92,18 @@ input[type=text] {
     text-align: center;
 }
 
-#display-option {
-    margin-top:4px;
-    margin-bottom:4px;
-    font-family: 'Darker Grotesque', sans-serif;
-    font-size: 18px;
-    color: var(--basic);
-    background-color: transparent;
-    border: none;
-    width: 100px;
-}
-    #display-option:hover {
-        -webkit-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-        color: var(--accent-highlighted);
-        cursor: url("/images/cursor_hover.png"),auto;
-    }
-
 #iconbar {
     position: fixed;
-    bottom: 15%;
+    bottom: 10%;
     right: 0;
     background-color: transparent;
+}
+
+#resume-holder {
+    width:0;
+    transition: width 1.5s ease-in;
+    background-color: var(--basic); 
+    height: 100vh;
 }
 
 /* . */
@@ -128,6 +121,7 @@ input[type=text] {
 }
 
 .dropdown-button {
+    border-radius: 10px;
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
     color: var(--basic);
@@ -141,6 +135,7 @@ input[type=text] {
         transition: all 0.5s ease;
         color: var(--accent-highlighted);
         cursor: url("/images/cursor_hover.png"),auto;
+        background-color: grey;
     }
 
 /* :: */

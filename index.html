@@ -9,55 +9,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&family=IBM+Plex+Mono:wght@100&display=swap" rel="stylesheet">
 </head>
 <body class="container" style="margin:0; padding:0">
-    <div>
-        <div style="display:flex">
-            <div style="background-color:var(--basic); height:100vh">
-                <div id="resume-pdf" style="display:none">
-                    <iframe type="application/pdf" src="documents/NessChu_Resume.pdf#zoom=fit" frameborder="0" style="display:flex; margin:2vh; width:75vh; height:96vh"></iframe>
-                </div>
-            </div>
-            <div style="flex:50%; margin-left:1vh">
-                <h1 id="title" class="item" aria-label="hello world">> ness chu</h1>
-                <p style="margin-top:0">computer science // biology // event organization</p>
-                <!--<script>
-                    var title = document.getElementById('title');
-                    title.onmouseover = function() {scramble()};
-                    title.onmouseout = function() {unscramble()};
-                </script>-->
-                <button class="dropdown-button" onclick="showContent('resume-pdf')" style="margin-left:2vh; border:solid; border-width:1px; border-color:var(--basic)">resume</button>
-            </div>
-            <div style="flex:50%">
-                <p></p>
+    <div style="display:flex">
+        <div id="resume-holder">
+            <div id="resume-pdf">
+                <iframe type="application/pdf" src="documents/NessChu_Resume.pdf#zoom=fit" frameborder="0" style="display:flex; margin:2vh; width:75vh; height:96vh"></iframe>
             </div>
         </div>
-
-        <div id="settings">
-            <button class="dropdown-button" onclick="showContent('settings-options')">⚙️</button><br />
-            <div id="settings-options" style="display:none">
-                <button id="display-option" onclick=toggleMode() style="margin-bottom:12px">☀️</button><br />
-            </div>
-        </div>
-        <div id="iconbar">
-            <!-- TODO: Make CSS tag for spacer divs. -->
-            <a href="https://www.linkedin.com/in/v-chu/" target="_blank">
-                <img src="/images/logos/linkedin.png" alt="LinkedIn" width="48" height="48">
-            </a>
-            <div style="padding: 28px"></div>
-            <a href="https://justness.itch.io/" target="_blank">
-                <img src="/images/logos/itch-io.png" alt="itch.io" width="48" height="48">
-            </a>
-            <div style="padding: 28px"></div>
-            <a href="https://github.com/justness" target="_blank">
-                <img src="/images/logos/github.png" alt="GitHub" width="48" height="48">
-            </a>
-            <div style="padding: 28px"></div>
-            <a href="https://twitter.com/jjustness" target="_blank">
-                <img src="/images/logos/twitter.png" alt="Twitter" width="48" height="48">
-            </a>
-            <div style="padding: 28px"></div>
-            <a href="vanessa.chu@mail.mcgill.ca" target="_blank">
-                <img src="/images/logos/email.png" alt="Email" width="48" height="48">
-            </a>
+        <div style="flex-grow:1; margin-left:1vh; background-color: var(--bkg)">
+            <h1 id="title" class="item">> ness chu</h1>
+            <p style="margin-top:0">computer science // biology // event organization</p>
+            <button onclick="toggleResumeHolder()" style="margin-left:2vh">resume</button>
         </div>
     </div>
+
+    <div id="settings">
+        <button onclick="toggleDropdown('settings-options')" style="margin-bottom:1vh">⚙️</button><br />
+        <div id="settings-options" style="opacity:0; height:0; transition:all .5s">
+            <button id="display-option" onclick=toggleMode() style="font-size:18px">☀️</button><br />
+            <button id="audio-option" onclick=toggleAudio() style="font-size:18px">▶️</button><br />
+        </div>
+    </div>
+    <div id="iconbar">
+        <!-- TODO: Make CSS tag for spacer divs. -->
+        <a href="https://www.linkedin.com/in/v-chu/" target="_blank">
+            <img src="/images/logos/linkedin.png" alt="LinkedIn" width="48" height="48">
+        </a>
+        <div style="padding: 28px"></div>
+        <a href="https://justness.itch.io/" target="_blank">
+            <img src="/images/logos/itch-io.png" alt="itch.io" width="48" height="48">
+        </a>
+        <div style="padding: 28px"></div>
+        <a href="https://github.com/justness" target="_blank">
+            <img src="/images/logos/github.png" alt="GitHub" width="48" height="48">
+        </a>
+        <div style="padding: 28px"></div>
+        <a href="https://twitter.com/jjustness" target="_blank">
+            <img src="/images/logos/twitter.png" alt="Twitter" width="48" height="48">
+        </a>
+        <div style="padding: 28px"></div>
+        <a href="vanessa.chu@mail.mcgill.ca" target="_blank">
+            <img src="/images/logos/email.png" alt="Email" width="48" height="48">
+        </a>
+    </div>
+    <audio autoplay loop id="bkg-audio">
+        <source src="audio/BackbayLounge.mp3" type="audio/mp3">
+    </audio>
 </body>
