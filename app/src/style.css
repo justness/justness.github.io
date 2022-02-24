@@ -10,7 +10,7 @@
 
 html {
     height: 100%;
-    cursor: url("/images/cursor_norm.png"),auto; /* Update graphic for better aim. */
+    cursor: url("./images/cursor_norm.png"),auto; /* Update graphic for better aim. */
     background-color: var(--bkg);
 }
 
@@ -45,7 +45,7 @@ body {
 a {
     color: var(--accent);
     text-decoration: none;
-    cursor: url("/images/cursor_norm.png"),auto;
+    cursor: url("./images/cursor_norm.png"),auto;
     transition: 0.5s;
     position: absolute;
     right: 0px;
@@ -58,7 +58,7 @@ a {
         color: var(--accent-highlighted);
         opacity: 1;
         text-decoration: none;
-        cursor: url("/images/cursor_hover.png"),auto;
+        cursor: url("./images/cursor_hover.png"),auto;
         position: absolute;
         max-width: 48px;
     }
@@ -77,7 +77,7 @@ button {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
         color: var(--accent-highlighted);
-        cursor: url("/images/cursor_hover.png"),auto;
+        cursor: url("./images/cursor_hover.png"),auto;
         background-color: gray;
     }
 
@@ -134,7 +134,7 @@ button {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
         color: var(--accent-highlighted);
-        cursor: url("/images/cursor_hover.png"),auto;
+        cursor: url("./images/cursor_hover.png"),auto;
         background-color: grey;
     }
 
