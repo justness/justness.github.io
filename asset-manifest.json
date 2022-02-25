@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.a6c97711.css",
-    "main.js": "/static/js/main.ff5842b3.js",
-    "static/js/787.5f94f48e.chunk.js": "/static/js/787.5f94f48e.chunk.js",
-    "static/media/BackbayLounge.mp3": "/static/media/BackbayLounge.f606248bc72e567117d6.mp3",
-    "static/media/NessChu_Resume.pdf": "/static/media/NessChu_Resume.19daf1e35d2c332ee839.pdf",
-    "static/media/email.png": "/static/media/email.189e428aa71569e58e74.png",
-    "static/media/twitter.png": "/static/media/twitter.9f8b2b03d98ba115e63d.png",
-    "index.html": "/index.html",
-    "main.a6c97711.css.map": "/static/css/main.a6c97711.css.map",
-    "main.ff5842b3.js.map": "/static/js/main.ff5842b3.js.map",
-    "787.5f94f48e.chunk.js.map": "/static/js/787.5f94f48e.chunk.js.map"
+    "main.css": "/justness.github.io/static/css/main.a6c97711.css",
+    "main.js": "/justness.github.io/static/js/main.bdf9074d.js",
+    "static/js/787.5f94f48e.chunk.js": "/justness.github.io/static/js/787.5f94f48e.chunk.js",
+    "static/media/BackbayLounge.mp3": "/justness.github.io/static/media/BackbayLounge.f606248bc72e567117d6.mp3",
+    "static/media/NessChu_Resume.pdf": "/justness.github.io/static/media/NessChu_Resume.19daf1e35d2c332ee839.pdf",
+    "static/media/email.png": "/justness.github.io/static/media/email.189e428aa71569e58e74.png",
+    "static/media/twitter.png": "/justness.github.io/static/media/twitter.9f8b2b03d98ba115e63d.png",
+    "index.html": "/justness.github.io/index.html",
+    "main.a6c97711.css.map": "/justness.github.io/static/css/main.a6c97711.css.map",
+    "main.bdf9074d.js.map": "/justness.github.io/static/js/main.bdf9074d.js.map",
+    "787.5f94f48e.chunk.js.map": "/justness.github.io/static/js/787.5f94f48e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a6c97711.css",
-    "static/js/main.ff5842b3.js"
+    "static/js/main.bdf9074d.js"
   ]
 }
