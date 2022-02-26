@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import '@polymer/paper-tooltip'
 import './style.css'
 
@@ -11,7 +12,7 @@ import itchLogo from './images/logos/itchio.png'
 import linkedinLogo from './images/logos/linkedin.png'
 import twitterLogo from './images/logos/twitter.png'
 
-var lightmode = false;
+var lightmode = true;
 var audioPlaying = false;
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
             settingsOptions.current.style.height = "auto";
         }
     }
-    const toggleResumeHolder = () => {
+    const toggleResumeHolder = () => { // TODO: Generalize this function.
         if (resumeHolder.current.style.width === "80vh"){
             resumeHolder.current.style.width = "0";
         }
@@ -65,6 +66,7 @@ const App = () => {
             audioOption.current.innerHTML = "▶️";
         }
         else {
+            bkgAudioComponent.current.volume = 0.1;
             bkgAudioComponent.current.play();
             audioOption.current.innerHTML = "⏸";
         }
@@ -79,10 +81,10 @@ const App = () => {
                         <iframe type="application/pdf" src={resume} border="0" style={{display:'flex', margin:2+'vh', width:75+'vh', height:96+'vh'}} />
                     </div>
                 </div>
-                <div style={{flexGrow:1, marginLeft:1+'vh', backgroundColor:'var(--bkg)'}}>
-                    <h1 id="title" className="item">&gt; ness chu</h1>
-                    <p style={{marginTop:0}}>computer science // biology // event organization</p>
-                    <button onClick={toggleResumeHolder} style={{marginLeft:2+'vh'}}>resume</button>
+                <div style={{flexGrow:1, backgroundColor:'var(--bkg)'}}>
+                    <h1 id="title" className="item" style={{paddingLeft:1+'vh'}}>&gt; ness chu</h1>
+                    <p style={{marginTop:0}} style={{paddingLeft:2+'vh'}}>computer science // biology // game dev</p>
+                    <button class="side-tab" onClick={toggleResumeHolder}>resume</button>
                 </div>
                 <div style={{backgroundColor:'var(--bkg)'}}>
                     <p></p>
@@ -92,7 +94,7 @@ const App = () => {
             <div id="settings">
                 <button onClick={toggleDropdown} style={{marginBottom:1+'vh'}}>{'⚙️'}</button><br />
                 <div id="settings-options" ref={settingsOptions} style={{opacity:0, height:0, transition:'all .5s'}}>
-                    <button id="display-option" ref={displayOption} onClick={toggleMode} style={{fontSize:18+'px'}}>{'☀️'}</button><br />
+                    <button id="display-option" ref={displayOption} onClick={toggleMode} style={{fontSize:18+'px'}}>{'🌙'}</button><br />
                     <paper-tooltip for="display-option" position="left">Light/Dark mode</paper-tooltip>
                     <button id="audio-option" ref={audioOption} onClick={toggleAudio} style={{fontSize:18+'px'}}>{'▶️'}</button>
                     <paper-tooltip for="audio-option" position="left">Backbay Lounge Kevin MacLeod (incompetech.com)</paper-tooltip>
@@ -100,26 +102,26 @@ const App = () => {
             </div>
             <div id="iconbar">
                 <a href="https://www.linkedin.com/in/v-chu/" target="_blank">
-                    <img src={linkedinLogo} alt="LinkedIn" width="48" height="48" />
+                    <img src={linkedinLogo} alt="LinkedIn" width="48" height="48" style={{filter:'invert(1)'}} />
                 </a>
                 <div style={{padding: 28+'px'}}></div>
                 <a href="https://justness.itch.io/" target="_blank">
-                    <img src={itchLogo} alt="itch.io" width="48" height="48" />
+                    <img src={itchLogo} alt="itch.io" width="48" height="48" style={{filter:'invert(1)'}} />
                 </a>
                 <div style={{padding: 28+'px'}}></div>
                 <a href="https://github.com/justness" target="_blank">
-                    <img src={githubLogo} alt="GitHub" width="48" height="48" />
+                    <img src={githubLogo} alt="GitHub" width="48" height="48" style={{filter:'invert(1)'}} />
                 </a>
                 <div style={{padding: 28+'px'}}></div>
                 <a href="https://twitter.com/jjustness" target="_blank">
-                    <img src={twitterLogo} alt="Twitter" width="48" height="48" />
+                    <img src={twitterLogo} alt="Twitter" width="48" height="48" style={{filter:'invert(1)'}} />
                 </a>
                 <div style={{padding: 28+'px'}}></div>
                 <a href="vanessa.chu@mail.mcgill.ca" target="_blank">
-                    <img src={emailLogo} alt="Email" width="48" height="48" />
+                    <img src={emailLogo} alt="Email" width="48" height="48" style={{filter:'invert(1)'}} />
                 </a>
             </div>
-            <audio id="bkg-audio" ref={bkgAudioComponent} src={bkgAudio} autoPlay loop />
+            <audio id="bkg-audio" ref={bkgAudioComponent} src={bkgAudio} loop />
         </div>
     )
 }
