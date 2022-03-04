@@ -42,28 +42,9 @@ body {
     background-color: transparent;
 }
 
-a {
-    color: var(--accent);
-    text-decoration: none;
-    cursor: url("./images/cursor_norm.png"),auto;
-    transition: 0.5s;
-    position: absolute;
-    right: 0px;
-    max-width: 30px;
-    overflow: hidden;
-}
-    a:hover {
-        -webkit-transition: all 1s ease;
-        transition: all 1s ease;
-        color: var(--accent-highlighted);
-        opacity: 1;
-        text-decoration: none;
-        cursor: url("./images/cursor_hover.png"),auto;
-        position: absolute;
-        max-width: 48px;
-    }
-
 button {
+    display: flex;
+    align-items: center;
     border-radius: 10px;
     min-height:36px;
     min-width:36px;
@@ -76,7 +57,7 @@ button {
     button:hover {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
-        color: var(--accent-highlighted);
+        color: var(--bkg);
         cursor: url("./images/cursor_hover.png"),auto;
         background-color: gray;
     }
@@ -84,26 +65,27 @@ button {
 /* # */
 
 #settings{
-    position:fixed;
-    top: 16px;
-    right: 16px;
+    position: absolute;
+    z-index: 10;
+    top: 12vh;
+    right: 0;
     min-height:36px;
     width: 100px;
     text-align: center;
 }
 
 #iconbar {
-    position: fixed;
+    position: absolute;
     bottom: 10%;
     right: 0;
     background-color: transparent;
 }
 
 #resume-holder {
-    width:0;
+    width: 0;
+    height: 90vh;
     transition: width 1.5s ease-in;
-    background-color: var(--basic); 
-    height: 100vh;
+    background-color: var(--basic);
 }
 
 /* . */
@@ -133,9 +115,46 @@ button {
     .dropdown-button:hover {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
-        color: var(--accent-highlighted);
         cursor: url("./images/cursor_hover.png"),auto;
+    }
+
+.logo {
+    text-decoration: none;
+    cursor: url("./images/cursor_norm.png"),auto;
+    transition: 0.5s;
+    position: absolute;
+    right: 0px;
+    max-width: 30px;
+    overflow: hidden;
+}
+    .logo:hover {
+        -webkit-transition: all 1s ease;
+        transition: all 1s ease;
+        opacity: 1;
+        text-decoration: none;
+        cursor: url("./images/cursor_hover.png"),auto;
+        position: absolute;
+        max-width: 48px;
+    }
+
+.router-link {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 18px;
+    color: var(--basic);
+    text-decoration: none;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    width: 100px;
+    height: 9.9vh;
+    transition: all .5s ease;
+    padding: 5vh;
+}
+    .router-link:hover {
+        color: var(--bkg);
         background-color: grey;
+        cursor: url("./images/cursor_hover.png"),auto;
     }
 
 .side-tab {
@@ -144,8 +163,13 @@ button {
     color: var(--bkg);
     margin-top: 1vh;
     width: 120px;
-    height: 40px;
+    height: 120px;
 }
+    .side-tab:hover {
+        color: var(--basic);
+        background-color: var(--bkg);
+        border: 1px var(--basic) solid;
+    }
 
 /* :: */
 
