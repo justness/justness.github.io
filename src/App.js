@@ -99,7 +99,7 @@ const App = () => {
                     </div>
                     <div style={{flexGrow:1, backgroundColor:'var(--bkg)'}}>
                         <h1 id="title" className="item" style={{padding:1+'vh'}}>&gt; ness chu</h1>
-                        <p style={{marginTop:0}} style={{paddingLeft:2+'vh'}}>computer science // biology // game dev</p>
+                        <p style={{marginTop:0, paddingLeft:2+'vh'}}>computer science // biology // game dev</p>
                         <button className="side-tab" onClick={toggleResumeHolder}><div style={{width:2+'vh'}}></div>resume</button>
                     </div>
                     <div style={{backgroundColor:'var(--bkg)'}}>
