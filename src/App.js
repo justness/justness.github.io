@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
-import ReactDOM from 'react-dom'
 import LazyLoad from 'react-lazyload';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom' // Do not remove Router
 import '@polymer/paper-tooltip'
 import '@polymer/iron-icons/iron-icons.js'
 import '@polymer/iron-icons/av-icons.js'
@@ -19,7 +18,7 @@ import twitterLogo from './images/logos/twitter.png'
 var lightmode = true;
 var audioPlaying = false;
 
-const App = () => {
+export default function App() {
     const resumeHolder = useRef()
     const settingsOptions = useRef()
     const displayOption = useRef()
@@ -81,12 +80,10 @@ const App = () => {
         <div>
             <div style={{height:10+'vh'}}>
                 <div style={{display:'flex', alignItems:'center', justifyContent:'center', width:100+'%', height:9.9+'vh'}}>
-                    <Router>
-                        <Link className="router-link" to="/">HOME</Link>
-                        <Link className="router-link" to="/">GAMEDEV</Link>
-                        <Link className="router-link" to="/">DESIGN</Link>
-                        <Link className="router-link" to="/">BIOLOGY</Link>
-                    </Router>
+                    <Link className="router-link" to="/">HOME</Link>
+                    <Link className="router-link" to="gamedev">GAMEDEV</Link>
+                    <Link className="router-link" to="design">DESIGN</Link>
+                    <Link className="router-link" to="biology">BIOLOGY</Link>
                 </div>
                 <div style={{backgroundColor:'var(--basic)', width:100+'%', height:.1+'vh', minHeight:1+'px'}}></div>
             </div>
@@ -97,23 +94,22 @@ const App = () => {
                             <iframe type="application/pdf" src={resume} border="0" style={{display:'flex', margin:2+'vh', width:75+'vh', height:85+'vh'}} />
                         </LazyLoad>
                     </div>
-                    <div style={{flexGrow:1, backgroundColor:'var(--bkg)'}}>
-                        <h1 id="title" className="item" style={{padding:1+'vh'}}>&gt; ness chu</h1>
+                    <div style={{flexGrow:1, height:90+'vh', backgroundColor:'var(--bkg)'}}>
+                        <h1 id="title" className="item" style={{padding:1+'vh', display:'inline-flex'}}>&gt; ness chu&nbsp;</h1>
+                        <div id="settings">
+                            <button onClick={toggleDropdown} style={{border:"1px var(--basic) solid"}}><iron-icon icon="settings"></iron-icon></button><br />
+                            <div ref={settingsOptions} style={{opacity:0, height:0, display:'inline-flex', flexDirection:'row', marginRight:1+'vh', transition:'all .5s'}}>
+                                <button id="display-option" ref={displayOption} onClick={toggleMode}><iron-icon icon="image:brightness-3"></iron-icon></button>
+                                <paper-tooltip for="display-option" position="top">Light/Dark mode</paper-tooltip>
+                                <button id="audio-option" ref={audioOption} onClick={toggleAudio}><iron-icon icon="av:play-arrow"></iron-icon></button>
+                                <paper-tooltip for="audio-option" position="top">Backbay Lounge Kevin MacLeod (incompetech.com)</paper-tooltip>
+                            </div>
+                        </div>
                         <p style={{marginTop:0, paddingLeft:2+'vh'}}>computer science // biology // game dev</p>
-                        <button className="side-tab" onClick={toggleResumeHolder}><div style={{width:2+'vh'}}></div>resume</button>
-                    </div>
-                    <div style={{backgroundColor:'var(--bkg)'}}>
-                        <p></p>
-                    </div>
-                </div>
-
-                <div id="settings">
-                    <button onClick={toggleDropdown}><iron-icon icon="settings"></iron-icon></button><br />
-                    <div id="settings-options" ref={settingsOptions} style={{opacity:0, height:0, transition:'all .5s'}}>
-                        <button id="display-option" ref={displayOption} onClick={toggleMode} style={{fontSize:18+'px'}}><iron-icon icon="image:brightness-3"></iron-icon></button>
-                        <paper-tooltip for="display-option" position="left">Light/Dark mode</paper-tooltip>
-                        <button id="audio-option" ref={audioOption} onClick={toggleAudio} style={{fontSize:18+'px'}}><iron-icon icon="av:play-arrow"></iron-icon></button>
-                        <paper-tooltip for="audio-option" position="left">Backbay Lounge Kevin MacLeod (incompetech.com)</paper-tooltip>
+                        <button className="side-tab" onClick={toggleResumeHolder}><div style={{width:2+'vh', bottom:2+'vh'}}></div>resume</button>
+                        <div style={{margin:8+'vh', height:30+'%', width:40+'%', overflow:'hidden'}}>
+                            <p>a thoughtful description of my profile, experiences, and aspirations. an easygoing quip about my hobbies. a motivational statement about the human potential.</p>
+                        </div>
                     </div>
                 </div>
                 <div id="iconbar">
@@ -142,6 +138,3 @@ const App = () => {
         </div>
     )
 }
-export default App
-
-ReactDOM.render(<App />, document.getElementById("root"))

@@ -21,12 +21,14 @@ h1 {
     color: var(--basic);
     line-height: 0px;
 }
+
 p {
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
     font-stretch: expanded;
     color: var(--basic-alt);
 }
+
 label{
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
@@ -40,6 +42,7 @@ body {
     user-select: none;          /* Likely future */
     margin: 12px;
     background-color: transparent;
+    background-image: url("./images/bkg.jpg");
 }
 
 button {
@@ -65,18 +68,15 @@ button {
 /* # */
 
 #settings{
-    position: absolute;
-    z-index: 10;
-    top: 12vh;
-    right: 0;
     min-height:36px;
-    width: 100px;
+    width: 120px;
     text-align: center;
+    display:inline-flex;
 }
 
 #iconbar {
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     right: 0;
     background-color: transparent;
 }
@@ -96,10 +96,6 @@ button {
 }
 .item {
     max-width: 75%;
-}
-
-.blue-text{
-    color: var(--accent); /* TODO: This is not working to override p colour. */
 }
 
 .dropdown-button {
@@ -140,7 +136,8 @@ button {
 .router-link {
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 18px;
-    color: var(--basic);
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-weight: bold;
     justify-content: center;
