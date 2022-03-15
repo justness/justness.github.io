@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Gamedev from './routes/Gamedev.js'
 import Design from './routes/Design.js'
-import Biology from './routes/Design.js'
+import Biology from './routes/Biology.js'
 
 const rootElement = document.getElementById("root");
 render(

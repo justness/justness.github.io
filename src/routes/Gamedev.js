@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Link } from 'react-router-dom' // Do not remove Router
+import SmallPost from '../components/SmallPost.js'
+import Settings from '../components/Settings.js'
 
 export default function Gamedev() {
     return (
@@ -13,8 +15,19 @@ export default function Gamedev() {
                 <div style={{backgroundColor:'var(--basic)', width:100+'%', height:.1+'vh', minHeight:1+'px'}}></div>
             </div>
             <div style={{display:'flex'}}>
-                <div style={{flexGrow:1, height:90+'vh', backgroundColor:'var(--bkg)'}}>
-                    
+                <div style={{width:100+'vw', height:90+'vh', backgroundColor:'var(--bkg)'}}>
+                    <h1 id="title" className="item" style={{padding:1+'vh', display:'inline-flex'}}>&gt; game development&nbsp;</h1>
+                    <Settings></Settings>
+                    <div style={{display:'flex',justifyContent:'center',flexWrap:'wrap',paddingLeft:20+'vw',paddingRight:20+'vw'}}>
+                        <SmallPost image="https://via.placeholder.com/200" title="Placeholder"></SmallPost>
+                        <SmallPost image="https://via.placeholder.com/200" title="Placeholder"></SmallPost>
+                        <SmallPost image="https://via.placeholder.com/200" title="Placeholder"></SmallPost>
+                        <SmallPost image="https://via.placeholder.com/200" title="Placeholder"></SmallPost>
+                        <SmallPost image="https://via.placeholder.com/200" title="Placeholder"></SmallPost>
+                        <SmallPost image="https://via.placeholder.com/200" title="Placeholder"></SmallPost>
+                        <SmallPost image="https://via.placeholder.com/200" title="Placeholder"></SmallPost>
+                        <SmallPost image="https://via.placeholder.com/200" title="Placeholder"></SmallPost>
+                    </div>
                 </div>
             </div>
         </div>
