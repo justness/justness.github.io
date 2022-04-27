@@ -28,7 +28,7 @@ export default function Gamedev() {
                     <div style={{display:'flex',justifyContent:'center',flexWrap:'wrap',paddingLeft:10+'vw',paddingRight:10+'vw'}}>
                         <BigPost 
                             image={Icarus} 
-                            title="Icarus(2022)" 
+                            title="Icarus (2022)" 
                             content="3D First-person dash-chaining melee combat game. Created on a team of 3 at an informal game jam for the theme 'Live fast, die strong'." 
                             link="https://omch.itch.io/icarus">
                         </BigPost>
