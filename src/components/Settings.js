@@ -29,7 +29,7 @@ export default function Settings() {
             document.documentElement.style.setProperty('--bkg',"black");
             document.documentElement.style.setProperty('--accent',"rgb(232,197,76)");
             document.documentElement.style.setProperty('--accent-highlighted',"rgb(255,232,151)");
-            for (var i = 0; i < images.length; i++){ images[i].style.filter = "invert(0)"; }
+            for (var i = 0; i < images.length; i++){ if (images[i].getAttribute("staticImage") !== "true") images[i].style.filter = "invert(0)"; }
         }
         else {
             displayOption.current.innerHTML = `<iron-icon icon="image:brightness-3"></iron-icon>`;
@@ -38,7 +38,7 @@ export default function Settings() {
             document.documentElement.style.setProperty('--bkg',"white");
             document.documentElement.style.setProperty('--accent',"rgb(92,128,188)");
             document.documentElement.style.setProperty('--accent-highlighted',"rgb(86,205,234)");
-            for (var i = 0; i < images.length; i++){ images[i].style.filter = "invert(1)"; }
+            for (var i = 0; i < images.length; i++){ if (images[i].getAttribute("staticImage") !== "true") images[i].style.filter = "invert(1)"; }
         }
         lightmode = !lightmode;
     }
