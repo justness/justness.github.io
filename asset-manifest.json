@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.4d760646.css",
-    "main.js": "/static/js/main.8673ed48.js",
+    "main.css": "/static/css/main.c2794a73.css",
+    "main.js": "/static/js/main.acd054bd.js",
     "static/js/787.5f94f48e.chunk.js": "/static/js/787.5f94f48e.chunk.js",
     "static/media/BackbayLounge.mp3": "/static/media/BackbayLounge.f606248bc72e567117d6.mp3",
-    "static/media/NessChu_Resume.pdf": "/static/media/NessChu_Resume.19daf1e35d2c332ee839.pdf",
     "static/media/icarus.png": "/static/media/icarus.06ea19e89e6621b84d51.png",
     "static/media/badtimestories.png": "/static/media/badtimestories.b69584c26939467f385c.png",
     "static/media/antimony.png": "/static/media/antimony.aa577375390eff0fa4a3.png",
@@ -15,12 +14,12 @@
     "static/media/latenight.png": "/static/media/latenight.e04413a6c4cd12c0916d.png",
     "static/media/twitter.png": "/static/media/twitter.9f8b2b03d98ba115e63d.png",
     "index.html": "/index.html",
-    "main.4d760646.css.map": "/static/css/main.4d760646.css.map",
-    "main.8673ed48.js.map": "/static/js/main.8673ed48.js.map",
+    "main.c2794a73.css.map": "/static/css/main.c2794a73.css.map",
+    "main.acd054bd.js.map": "/static/js/main.acd054bd.js.map",
     "787.5f94f48e.chunk.js.map": "/static/js/787.5f94f48e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d760646.css",
-    "static/js/main.8673ed48.js"
+    "static/css/main.c2794a73.css",
+    "static/js/main.acd054bd.js"
   ]
 }
