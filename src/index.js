@@ -6,8 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Gamedev from './routes/Gamedev.js'
-import Design from './routes/Design.js'
-import Biology from './routes/Biology.js'
 
 const rootElement = document.getElementById("root");
 render(
@@ -15,8 +13,6 @@ render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="gamedev" element={<Gamedev />} />
-        <Route path="design" element={<Design />} />
-        <Route path="biology" element={<Biology />} />
       </Routes>
     </Router>,
   rootElement
