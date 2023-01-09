@@ -41,11 +41,11 @@ export default function App() {
     ]
 
     const toggleSidebar = (element) => { // TODO: Generalize this function.
-        if (element.style.width === "80vh"){
+        if (element.style.width === "100vh"){
             element.style.width = "0";
         }
         else {
-            element.style.width = "80vh";
+            element.style.width = "100vh";
         }
     }
 
@@ -54,62 +54,67 @@ export default function App() {
             <div style={{height:10+'vh'}}>
                 <div style={{display:'flex', alignItems:'center', justifyContent:'center', width:100+'%', height:9.9+'vh'}}>
                     <Link className="router-link" to="/">HOME</Link>
-                    <Link className="router-link" to="gamedev">GAMEDEV</Link>
+                    <Link className="router-link" to="/gamedev">GAMEDEV</Link>
+                    <Link className="router-link" to="/contact">CONTACT</Link>
                 </div>
                 <div style={{backgroundColor:'var(--basic)', width:100+'%', height:.1+'vh', minHeight:1+'px'}}></div>
             </div>
             <div>
                 <div style={{display:'flex'}}>
                     <div class="resume-holder" ref={workHolder}>
-                        <div>
-                            <h3 style={{color:"white"}}>
-                                Macro
-                            </h3>
-                            <p style={{margin:0}}>
-                                2022-                       
-                            </p>
-                            <p style={{margin:0}}>
-                                Software Engineer
-                            </p>
-                        </div>
-                        <div>
-                            <h3 style={{color:"white"}}>
-                                Ubisoft Montreal
-                            </h3>
-                            <p style={{margin:0}}>
-                                2021                            
-                            </p>
-                            <p style={{margin:0}}>
-                                Tools Programming Intern
-                            </p>
+                        <div class="resume-contents">
+                            <div>
+                                <h3 style={{color:"white"}}>
+                                    Macro
+                                </h3>
+                                <p style={{margin:0}}>
+                                    2022-present                
+                                </p>
+                                <p style={{margin:0}}>
+                                    Software Engineer
+                                </p>
+                            </div>
+                            <div>
+                                <h3 style={{color:"white"}}>
+                                    Ubisoft Montreal
+                                </h3>
+                                <p style={{margin:0}}>
+                                    2021                            
+                                </p>
+                                <p style={{margin:0}}>
+                                    Tools Programming Intern
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="resume-holder" ref={educationHolder}>
-                        <div>
-                            <h3 style={{color:"white"}}>
-                                McGill University
-                            </h3>
-                            <p style={{margin:0}}>
-                                2018-2022                       
-                            </p>
-                            <p style={{margin:0}}>
-                                B.Sc. Computer Science/Biology Joint Major
-                            </p>
-                        </div>
-                        <div>
-                            <h3 style={{color:"white"}}>
-                                Google
-                            </h3>
-                            <p style={{margin:0}}>
-                                2020                      
-                            </p>
-                            <p style={{margin:0}}>
-                                Google SPS Participant
-                            </p>
+                        <div class="resume-contents">
+                            <div>
+                                <h3 style={{color:"white"}}>
+                                    McGill University
+                                </h3>
+                                <p style={{margin:0}}>
+                                    2018-2022                       
+                                </p>
+                                <p style={{margin:0}}>
+                                    B.Sc. Computer Science/Biology Joint Major
+                                </p>
+                            </div>
+                            <div>
+                                <h3 style={{color:"white"}}>
+                                    Google
+                                </h3>
+                                <p style={{margin:0}}>
+                                    2020                      
+                                </p>
+                                <p style={{margin:0}}>
+                                    Google SPS Participant
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="resume-holder" ref={hobbiesHolder}>
-                        <div style={{marginTop:"24px"}}>
+                        <div style={{marginTop:"24px", whiteSpace:"nowrap"}}>
                             {hobbies.map(hobby => {
                                 return (
                                     <p style={{margin:0, textAlign:"center", overflow:"hidden"}}>{hobby}</p>
@@ -117,7 +122,7 @@ export default function App() {
                             })}
                         </div>
                     </div>
-                    <div style={{flexGrow:1, height:90+'vh', backgroundColor:'var(--bkg)'}}>
+                    <div style={{flexGrow:1, height:90+'vh', backgroundColor:'var(--bkg)', overflowY:"scroll"}}>
                         <div style={{display:"flex"}}>
                             <h1 id="title" className="item" style={{fontSize:"160px", display:'inline-flex', wordBreak:"break-all", lineHeight:"120px", marginTop:"54px", marginLeft:"54px"}}>ness chu</h1>
                             <div style={{position:"absolute", width:"100%", display:"flex", marginTop:"54px", right:"54px", whiteSpace:"nowrap", justifyContent:"flex-end"}}>

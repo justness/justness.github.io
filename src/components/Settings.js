@@ -58,7 +58,7 @@ export default function Settings() {
     return (
         <div id="settings" style={{flexDirection:"column", width:"48px"}}>
             <button onClick={toggleDropdown} style={{border:"1px var(--basic) solid"}}><iron-icon icon="settings"></iron-icon></button><br />
-            <div ref={settingsOptions} style={{opacity:0, height:0, display:'inline-flex', flexDirection:'column', marginRight:1+'vh', transition:'all .5s', whiteSpace:"normal"}}>
+            <div ref={settingsOptions} style={{opacity:0, height:0, display:'inline-flex', flexDirection:'column', transition:'all .5s', whiteSpace:"normal", backgroundColor:"var(--bkg)", borderRadius:"0 0 50px 50px"}}>
                 <button id="display-option" ref={displayOption} onClick={toggleMode}><iron-icon icon="image:brightness-3"></iron-icon></button>
                 <paper-tooltip for="display-option" position="top">Light/Dark mode</paper-tooltip>
                 <button id="audio-option" ref={audioOption} onClick={toggleAudio}><iron-icon icon="av:play-arrow"></iron-icon></button>

@@ -15,7 +15,9 @@ export default function _TEMPLATE() {
             <div style={{display:'flex'}}>
                 <div style={{width:100+'vw', height:90+'vh', backgroundColor:'var(--bkg)'}}>
                     <h1 id="title" className="item" style={{padding:1+'vh', display:'inline-flex'}}>&gt; _TEMPLATE&nbsp;</h1>
-                    <Settings></Settings>
+                    <div style={{position:"absolute", width:"100%", display:"flex", marginTop:"16px", right:"54px", whiteSpace:"nowrap", justifyContent:"flex-end"}}>
+                        <Settings></Settings>
+                    </div>
                 </div>
             </div>
         </div>

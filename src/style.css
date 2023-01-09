@@ -69,6 +69,7 @@ button {
     color: var(--basic);
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
     button:hover {
         -webkit-transition: all 0.5s ease;
@@ -139,6 +140,12 @@ button {
         max-width: 48px;
     }
 
+.resume-contents {
+    padding-left: 24px;
+    padding-right: 24px;
+    white-space: nowrap;
+}
+
 .resume-holder {
     width: 0;
     height: 90vh;
@@ -160,6 +167,8 @@ button {
     height: 9.9vh;
     transition: all .5s ease;
     padding: 5vh;
+    margin-left: 2px;
+    margin-right: 2px;
 }
     .router-link:hover {
         color: var(--bkg);
