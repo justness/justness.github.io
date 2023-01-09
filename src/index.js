@@ -13,8 +13,8 @@ render(
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="gamedev" element={<Gamedev />} />
-        <Route path="contact" element={<Contact />} />
+        <Route path="/gamedev" element={<Gamedev />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>,
   rootElement
