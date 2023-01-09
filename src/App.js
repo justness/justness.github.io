@@ -53,7 +53,7 @@ export default function App() {
         <div>
             <div style={{height:10+'vh'}}>
                 <div style={{display:'flex', alignItems:'center', justifyContent:'center', width:100+'%', height:9.9+'vh'}}>
-                    <Link className="router-link" to="/">HOME</Link>
+                    <Link style={{backgroundColor:"var(--basic)", color:"var(--bkg)"}} className="router-link" to="/">HOME</Link>
                     <Link className="router-link" to="/gamedev">GAMEDEV</Link>
                     <Link className="router-link" to="/contact">CONTACT</Link>
                 </div>
@@ -124,7 +124,7 @@ export default function App() {
                     </div>
                     <div style={{flexGrow:1, height:90+'vh', backgroundColor:'var(--bkg)', overflowY:"scroll"}}>
                         <div style={{display:"flex"}}>
-                            <h1 id="title" className="item" style={{fontSize:"160px", display:'inline-flex', wordBreak:"break-all", lineHeight:"120px", marginTop:"54px", marginLeft:"54px"}}>ness chu</h1>
+                            <h1 id="title" className="item" style={{fontSize:"140px", display:'inline-flex', wordBreak:"break-all", lineHeight:"100px", marginTop:"54px", marginLeft:"54px"}}>ness chu</h1>
                             <div style={{position:"absolute", width:"100%", display:"flex", marginTop:"54px", right:"54px", whiteSpace:"nowrap", justifyContent:"flex-end"}}>
                                 <Settings></Settings>
                             </div>
