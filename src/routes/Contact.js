@@ -14,9 +14,6 @@ export default function Contact() {
                 <div style={{backgroundColor:'var(--basic)', width:100+'%', height:.1+'vh', minHeight:1+'px'}}></div>
             </div>
             <div style={{display:'flex'}}>
-                <div style={{position:"absolute", width:"100%", display:"flex", marginTop:"54px", right:"54px", whiteSpace:"nowrap", justifyContent:"flex-end"}}>
-                    <Settings></Settings>
-                </div>
                 <div style={{width:100+'vw', height:90+'vh', backgroundColor:'var(--bkg)', overflowY:"scroll"}}>
                     <h1 id="title" className="item" style={{padding:1+'vh', display:'inline-flex'}}>&gt; contact&nbsp;</h1>
                     <div style={{margin:"24px"}}>
@@ -33,10 +30,6 @@ export default function Contact() {
                             <br />
                             <div style={{display:"inline-flex"}}>
                                 <FaTwitter style={{width:"18px", height:"18px"}}/>&nbsp;<a href="https://twitter.com/jjustness" >@jjustness</a>
-                            </div>
-                            <br />
-                            <div style={{display:"inline-flex"}}>
-                                <FaDiscord style={{width:"18px", height:"18px"}}/>&nbsp;ness#8155
                             </div>
                         </div>
                     </div>

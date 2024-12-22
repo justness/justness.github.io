@@ -1,8 +1,6 @@
-﻿/*   */
-
-:root {
+﻿:root {
     --basic: black;
-    --basic-alt: rgb(90,90,90);
+    --basic-alt: rgb(120,120,120);
     --bkg: white;
     --accent: rgb(160, 255, 203);
     --accent-highlighted: rgb(0, 255, 72);
@@ -24,21 +22,28 @@ h1 {
 
 h3 {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 0;
+    color: var(--basic);
 }
 
 h4 {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 18px;
+    font-size: 12px;
     margin-bottom: 0;
+    color: var(--basic);
 }
 
 p {
     font-family: 'Darker Grotesque', sans-serif;
-    font-size: 24px;
+    font-size: 16px;
     font-stretch: expanded;
     color: var(--basic-alt);
+}
+@media screen and (max-width:500px) {
+    p {
+        font-size: 24px;
+    }
 }
 
 label{
@@ -67,16 +72,18 @@ button {
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 24px;
     color: var(--basic);
-    background-color: transparent;
+    background-color: var(--bkg);
     border: none;
-    cursor: pointer;
+    cursor: default;
+    border:1px var(--basic) solid;
 }
     button:hover {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
         color: var(--bkg);
         /* cursor: url("./images/cursor_hover.png"),auto; */
-        background-color: gray;
+        background-color: var(--basic);
+        border:1px var(--bkg) solid;
     }
 
 /* # */
@@ -149,7 +156,7 @@ button {
 .resume-holder {
     width: 0;
     height: 90vh;
-    transition: width 1.5s ease-in;
+    transition: width .25s ease-in;
     background-color: var(--basic);
 }
 

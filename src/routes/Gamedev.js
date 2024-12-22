@@ -21,12 +21,9 @@ export default function Gamedev() {
                 <div style={{backgroundColor:'var(--basic)', width:100+'%', height:.1+'vh', minHeight:1+'px'}}></div>
             </div>
             <div style={{display:'flex'}}>
-                <div style={{position:"absolute", width:"100%", display:"flex", marginTop:"54px", right:"54px", whiteSpace:"nowrap", justifyContent:"flex-end"}}>
-                    <Settings></Settings>
-                </div>
                 <div style={{width:100+'vw', height:90+'vh', backgroundColor:'var(--bkg)', overflowY:"scroll"}}>
                     <h1 id="title" className="item" style={{padding:1+'vh', display:'inline-flex'}}>&gt; game development&nbsp;</h1>
-                    <div style={{display:'flex',justifyContent:'center',flexWrap:'wrap',paddingLeft:10+'vw',paddingRight:10+'vw'}}>
+                    <div style={{display:'flex',justifyContent:'center',flexWrap:'wrap',paddingLeft:4+'vw',paddingRight:5+'vw'}}>
                         <BigPost 
                             image={Icarus} 
                             title="Icarus (2022)" 

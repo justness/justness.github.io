@@ -25,20 +25,18 @@ export default function Settings() {
         if (lightmode) {
             displayOption.current.innerHTML = `<iron-icon icon="image:flare"></iron-icon>`;
             document.documentElement.style.setProperty('--basic',"white");
-            document.documentElement.style.setProperty('--basic-alt', "rgb(230,230,230)");
             document.documentElement.style.setProperty('--bkg',"black");
             document.documentElement.style.setProperty('--accent',"rgb(232,197,76)");
             document.documentElement.style.setProperty('--accent-highlighted',"rgb(255,232,151)");
-            for (var i = 0; i < images.length; i++){ if (images[i].getAttribute("staticImage") !== "true") images[i].style.filter = "invert(0)"; }
+            for (var i = 0; i < images.length; i++){ if (images[i].getAttribute("staticimage") !== "true") images[i].style.filter = "invert(0)"; }
         }
         else {
             displayOption.current.innerHTML = `<iron-icon icon="image:brightness-3"></iron-icon>`;
             document.documentElement.style.setProperty('--basic',"black");
-            document.documentElement.style.setProperty('--basic-alt', "rgb(90,90,90)");
             document.documentElement.style.setProperty('--bkg',"white");
             document.documentElement.style.setProperty('--accent',"rgb(92,128,188)");
             document.documentElement.style.setProperty('--accent-highlighted',"rgb(86,205,234)");
-            for (var i = 0; i < images.length; i++){ if (images[i].getAttribute("staticImage") !== "true") images[i].style.filter = "invert(1)"; }
+            for (var i = 0; i < images.length; i++){ if (images[i].getAttribute("staticimage") !== "true") images[i].style.filter = "invert(1)"; }
         }
         lightmode = !lightmode;
     }
@@ -57,12 +55,12 @@ export default function Settings() {
 
     return (
         <div id="settings" style={{flexDirection:"column", width:"48px"}}>
-            <button onClick={toggleDropdown} style={{border:"1px var(--basic) solid"}}><iron-icon icon="settings"></iron-icon></button><br />
-            <div ref={settingsOptions} style={{opacity:0, height:0, display:'inline-flex', flexDirection:'column', transition:'all .5s', whiteSpace:"normal", backgroundColor:"var(--bkg)", borderRadius:"0 0 50px 50px"}}>
-                <button id="display-option" ref={displayOption} onClick={toggleMode}><iron-icon icon="image:brightness-3"></iron-icon></button>
-                <paper-tooltip for="display-option" position="top">Light/Dark mode</paper-tooltip>
-                <button id="audio-option" ref={audioOption} onClick={toggleAudio}><iron-icon icon="av:play-arrow"></iron-icon></button>
-                <paper-tooltip for="audio-option" position="top">Backbay Lounge Kevin MacLeod (incompetech.com)</paper-tooltip>
+            <button onClick={toggleDropdown} style={{filter:"invert(1)"}}><iron-icon icon="settings"></iron-icon></button><br />
+            <div ref={settingsOptions} style={{opacity:0, height:0, display:'inline-flex', flexDirection:'column', transition:'all .5s', whiteSpace:"normal", backgroundColor:"transparent", borderRadius:"0 0 50px 50px"}}>
+                <button id="display-option" style={{border:"none"}} ref={displayOption} onClick={toggleMode}><iron-icon icon="image:brightness-3"></iron-icon></button>
+                <paper-tooltip for="display-option" position="left">Light/Dark mode</paper-tooltip>
+                <button id="audio-option" style={{border:"none"}} ref={audioOption} onClick={toggleAudio}><iron-icon icon="av:play-arrow"></iron-icon></button>
+                <paper-tooltip for="audio-option" position="left">Backbay Lounge Kevin MacLeod (incompetech.com)</paper-tooltip>
             </div>
             <audio id="bkg-audio" ref={bkgAudioComponent} src={bkgAudio} loop />
         </div>
