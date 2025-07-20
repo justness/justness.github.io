@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Link } from 'react-router-dom' // Do not remove Router
-import Settings from '../components/Settings.js'
-import { FaDiscord, FaAt, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaAt, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 export default function Contact() {
     return (

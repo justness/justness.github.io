@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Link } from 'react-router-dom' // Do not remove Router
 import BigPost from '../components/BigPost.js'
-import SmallPost from '../components/SmallPost.js'
-import Settings from '../components/Settings.js'
 import Antimony from '../images/gamedev/antimony.png'
 import BadtimeStories from '../images/gamedev/badtimestories.png'
 import Icarus from '../images/gamedev/icarus.png'

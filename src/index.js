@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Gamedev from './routes/Gamedev.js'
 import Contact from './routes/Contact.js'
+import DETest from './routes/DETest.js';
 
 const rootElement = document.getElementById("root");
 render(
@@ -15,6 +16,7 @@ render(
         <Route path="/" element={<App />} />
         <Route path="/gamedev" element={<Gamedev />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/detest" element={<DETest />} />
       </Routes>
     </Router>,
   rootElement

@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { BrowserRouter as Router, Link } from 'react-router-dom' // Do not remove Router
+import { useRef } from 'react'
+import { Link } from 'react-router-dom' // Do not remove Router
 import Settings from './components/Settings.js'
 import Social from './components/Social.js'
 import '@polymer/paper-tooltip'
@@ -32,12 +32,12 @@ export default function App() {
     return (
         <div>
             <div style={{height:10+'vh'}}>
-                <div style={{display:'flex', alignItems:'center', justifyContent:'center', width:100+'%', height:9.9+'vh'}}>
-                    <Link style={{backgroundColor:"var(--basic)", color:"var(--bkg)"}} className="router-link" to="/">HOME</Link>
-                    <Link className="router-link" to="/gamedev">GAMEDEV</Link>
-                    <Link className="router-link" to="/contact">CONTACT</Link>
-                </div>
-                <div style={{backgroundColor:'var(--basic)', width:100+'%', height:.1+'vh', minHeight:1+'px'}}></div>
+								<div style={{display:'flex', alignItems:'center', justifyContent:'center', width:100+'%', height:9.9+'vh'}}>
+										<Link style={{backgroundColor:"var(--basic)", color:"var(--bkg)"}} className="router-link" to="/">HOME</Link>
+										<Link className="router-link" to="/gamedev">GAMEDEV</Link>
+										<Link className="router-link" to="/contact">CONTACT</Link>
+								</div>
+							<div style={{backgroundColor:'var(--basic)', width:100+'%', height:.1+'vh', minHeight:1+'px'}}></div>
             </div>
             <div>
                 <div style={{display:'flex'}}>
