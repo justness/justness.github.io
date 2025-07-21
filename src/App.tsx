@@ -298,46 +298,52 @@ function App() {
                 }
               }} />
             </div>
-            <div class='absolute max-w-24 hover:scale-120 transition duration-150 ease-in-out bg-blue-100 rounded-lg p-2 left-[10%] top-[20%] -rotate-5'>
+            <div class='absolute w-100 -rotate-90 rotate-x-180 text-3xl text-neutral-700 right-[-22%] top-30'>
+              RESUME • GENERAL TECH
+            </div>
+            <div class='absolute w-12 h-12 scale-x-250 -rotate-5 transition duration-150 ease-in-out border-1 border-neutral-400 border-dashed rounded-full p-2 left-[10%] top-[21%]'/>
               <a href='https://macro.com/' target='_blank' class='cursor-default' onclick={() => {
                 if (audioOn()) {
                   clickAudioComponent.volume = 0.1;
                   clickAudioComponent.play();
                 }
               }}>
-                <img src='../src/assets/macro.svg' />
+                <div class='absolute flex items-center justify-center max-w-24 hover:scale-120 transition duration-150 ease-in-out border-4 border-blue-600 rounded-full p-1 left-[10%] top-[20%]'>
+                  <div class='w-2 h-2 bg-white rounded-full'/>
+                </div>
               </a>
-            </div>
-            <div class='absolute max-w-16 hover:scale-120 transition duration-150 ease-in-out bg-neutral-200 rounded-lg p-2 left-[10%] top-[50%] -rotate-5'>
-              <a href='https://montreal.ubisoft.com/en/' target='_blank' class='cursor-default' onclick={() => {
-                if (audioOn()) {
-                  clickAudioComponent.volume = 0.1;
-                  clickAudioComponent.play();
-                }
-              }}>
-                <img src='../src/assets/ubisoft.svg' />
-              </a>
-            </div>
-            <div class='absolute max-w-12 hover:scale-120 transition duration-150 ease-in-out bg-red-200 rounded-lg p-2 right-[4%] top-[58%] rotate-5'>
-              <a href='https://mcgill.ca/' target='_blank' class='cursor-default' onclick={() => {
-                if (audioOn()) {
-                  clickAudioComponent.volume = 0.1;
-                  clickAudioComponent.play();
-                }
-              }}>
-                <img src='../src/assets/mcgill.png' />
-              </a>
-            </div>
-            <div class='absolute max-w-10 hover:scale-120 transition duration-150 ease-in-out bg-pink-200 rounded-lg p-2 right-[3%] top-[64%] rotate-5'>
-              <a href='https://gamedevmcgill.ca/' target='_blank' class='cursor-default' onclick={() => {
-                if (audioOn()) {
-                  clickAudioComponent.volume = 0.1;
-                  clickAudioComponent.play();
-                }
-              }}>
-                <img src='../src/assets/gdm.png' />
-              </a>
-            </div>
+            <div class='absolute w-12 h-12 scale-x-250 rotate-5 transition duration-150 ease-in-out border-1 border-neutral-400 border-dashed rounded-full p-2 left-[5%] top-[47%]'/>
+            <a href='https://montreal.ubisoft.com/en/' target='_blank' class='cursor-default' onclick={() => {
+              if (audioOn()) {
+                clickAudioComponent.volume = 0.1;
+                clickAudioComponent.play();
+              }
+            }}>
+              <div class='absolute max-w-16 hover:scale-120 transition duration-150 ease-in-out border-4 border-violet-600 rounded-full p-1 left-[11%] top-[50.5%]'>
+                <div class='w-2 h-2 bg-white rounded-full'/>
+              </div>
+            </a>
+            <div class='absolute w-12 h-12 scale-x-250 -rotate-5 transition duration-150 ease-in-out border-1 border-neutral-400 border-dashed rounded-full p-2 right-[-1%] top-[60%]'/>
+            <a href='https://mcgill.ca/' target='_blank' class='cursor-default' onclick={() => {
+              if (audioOn()) {
+                clickAudioComponent.volume = 0.1;
+                clickAudioComponent.play();
+              }
+            }}>
+              <div class='absolute max-w-12 hover:scale-120 transition duration-150 ease-in-out border-4 border-red-600 rounded-full p-1 right-[4%] top-[59.5%]'>
+                <div class='w-2 h-2 bg-white rounded-full'/>
+              </div>
+            </a>
+            <a href='https://gamedevmcgill.ca/' target='_blank' class='cursor-default' onclick={() => {
+              if (audioOn()) {
+                clickAudioComponent.volume = 0.1;
+                clickAudioComponent.play();
+              }
+            }}>
+              <div class='absolute max-w-10 hover:scale-120 transition duration-150 ease-in-out border-4 border-pink-600 rounded-full p-1 right-[2%] top-[63.5%]'>
+                <div class='w-2 h-2 bg-white rounded-full'/>
+              </div>
+            </a>
             <div class='w-full h-full bg-neutral-800/90 flex flex-col items-center justify-center px-8 border-x-14 border-neutral-600/50'>
               <img src='../src/assets/resumeGT.png' class='max-w-full h-14/15 pb-4' />
               <div class='flex flex-row text-4xl'>
@@ -347,7 +353,7 @@ function App() {
                     clickAudioComponent.play();
                   }
                 }}>
-                  <i class='ph-bold ph-linkedin-logo text-neutral-600 hover:text-neutral-500 pr-4' />
+                  <i class='ph-bold ph-linkedin-logo text-neutral-600 hover:text-neutral-500 pr-8' />
                 </a>
                 <a href='https://github.com/justness' target='_blank' class='cursor-default' onclick={() => {
                   if (audioOn()) {
@@ -355,7 +361,7 @@ function App() {
                     clickAudioComponent.play();
                   }
                 }}>
-                  <i class='ph-bold ph-github-logo text-neutral-600 hover:text-neutral-500 pr-4' />
+                  <i class='ph-bold ph-github-logo text-neutral-600 hover:text-neutral-500 pr-8' />
                 </a>
                 <a href='https://justness.itch.io/' target='_blank' class='cursor-default' onclick={() => {
                   if (audioOn()) {
@@ -363,7 +369,7 @@ function App() {
                     clickAudioComponent.play();
                   }
                 }}>
-                  <i class='ph-bold ph-game-controller text-neutral-600 hover:text-neutral-500 pr-4' />
+                  <i class='ph-bold ph-game-controller text-neutral-600 hover:text-neutral-500 pr-8' />
                 </a>
                 <a href='../src/assets/resumeGT.pdf' download="NessChu_Resume.pdf" class='cursor-default' onclick={() => {
                   if (audioOn()) {
