@@ -2,6 +2,7 @@ import { createEffect, createSignal, For, onCleanup, onMount, Show } from "solid
 import bkgAudio from './assets/BackbayLounge.mp3';
 import gearAudio from './assets/gear.wav';
 import clickAudio from './assets/click.ogg';
+import keyPressAudio from './assets/keyPress.ogg';
 import tapAudio from './assets/ceramicTap.wav';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   let bkgAudioComponent!: HTMLAudioElement;
   let gearAudioComponent!: HTMLAudioElement;
   let clickAudioComponent!: HTMLAudioElement;
+  let keyPressAudioComponent!: HTMLAudioElement;
   let tapAudioComponent!: HTMLAudioElement;
 
   const barks = [
@@ -43,6 +45,10 @@ function App() {
   onMount(() => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        if (audioOn() && (resumeOpen() || portfolioOpen() || contactOpen())) {
+          keyPressAudioComponent.volume = 0.075;
+          keyPressAudioComponent.play();
+        }
         setResumeOpen(false);
         setPortfolioOpen(false);
         setContactOpen(false);
@@ -52,25 +58,15 @@ function App() {
   onCleanup(() => {
     document.removeEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        if (audioOn() && (resumeOpen() || portfolioOpen() || contactOpen())) {
+          keyPressAudioComponent.volume = 0.075;
+          keyPressAudioComponent.play();
+        }
         setResumeOpen(false);
         setPortfolioOpen(false);
         setContactOpen(false);
       }
     });
-  });
-
-  createEffect(() => {
-    if (audioOn()) {
-      bkgAudioComponent.volume = 0.01;
-      bkgAudioComponent.play();
-      for (let i = 0; i < 10; i ++) {
-        setTimeout(() => {
-          bkgAudioComponent.volume = 0.01 + i * 0.01;
-        }, i * 500);
-      }
-    } else {
-      bkgAudioComponent.pause();
-    }
   });
 
   createEffect(() => {
@@ -89,19 +85,22 @@ function App() {
         <audio id="bkg-audio" ref={bkgAudioComponent} src={bkgAudio} loop />
         <audio ref={gearAudioComponent} src={gearAudio} />
         <audio ref={clickAudioComponent} src={clickAudio} />
+        <audio ref={keyPressAudioComponent} src={keyPressAudio} />
         <audio ref={tapAudioComponent} src={tapAudio} />
         <div class='w-full h-full flex items-center justify-center bg-black'>
-          <div class='w-full h-full mt-[40%] flex items-center justify-center origin-center scale-x-225'>
-            <div class='w-[75vh] h-3/4 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center' style={{
-              'background-image': "url('../src/assets/grass.jpg')",
+          <Show when={!initialDarkness()}>
+            <div class='w-full h-full mt-[40%] flex items-center justify-center origin-center scale-x-225'>
+              <div class='w-[75vh] h-3/4 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center' style={{
+                'background-image': "url('../src/assets/grass.jpg')",
+              }}/>
+            </div>
+            <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain -skew-y-24 mr-[50vw] mb-[6.5%]' style={{
+              'background-image': "url('../src/assets/brickWall.jpg')",
             }}/>
-          </div>
-          <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain -skew-y-24 mr-[50vw] mb-[6.5%]' style={{
-            'background-image': "url('../src/assets/brickWall.jpg')",
-          }}/>
-          <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain skew-y-24 ml-[50vw] mb-[6.5%]' style={{
-            'background-image': "url('../src/assets/fence.png')",
-          }}/>
+            <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain skew-y-24 ml-[50vw] mb-[6.5%]' style={{
+              'background-image': "url('../src/assets/fence.png')",
+            }}/>
+          </Show>
         </div>
         <div class='absolute flex flex-row left-0 top-0 p-4 text-neutral-600 text-4xl items-center justify-center'>
           <i class='ph-duotone ph-gear mr-2 hover:text-neutral-500' onclick={() => {
@@ -299,16 +298,79 @@ function App() {
                 }
               }} />
             </div>
+            <div class='absolute max-w-24 hover:scale-120 transition duration-150 ease-in-out bg-blue-100 rounded-lg p-2 left-[10%] top-[20%] -rotate-5'>
+              <a href='https://macro.com/' target='_blank' class='cursor-default' onclick={() => {
+                if (audioOn()) {
+                  clickAudioComponent.volume = 0.1;
+                  clickAudioComponent.play();
+                }
+              }}>
+                <img src='../src/assets/macro.svg' />
+              </a>
+            </div>
+            <div class='absolute max-w-16 hover:scale-120 transition duration-150 ease-in-out bg-neutral-200 rounded-lg p-2 left-[10%] top-[50%] -rotate-5'>
+              <a href='https://montreal.ubisoft.com/en/' target='_blank' class='cursor-default' onclick={() => {
+                if (audioOn()) {
+                  clickAudioComponent.volume = 0.1;
+                  clickAudioComponent.play();
+                }
+              }}>
+                <img src='../src/assets/ubisoft.svg' />
+              </a>
+            </div>
+            <div class='absolute max-w-12 hover:scale-120 transition duration-150 ease-in-out bg-red-200 rounded-lg p-2 right-[4%] top-[58%] rotate-5'>
+              <a href='https://mcgill.ca/' target='_blank' class='cursor-default' onclick={() => {
+                if (audioOn()) {
+                  clickAudioComponent.volume = 0.1;
+                  clickAudioComponent.play();
+                }
+              }}>
+                <img src='../src/assets/mcgill.png' />
+              </a>
+            </div>
+            <div class='absolute max-w-10 hover:scale-120 transition duration-150 ease-in-out bg-pink-200 rounded-lg p-2 right-[3%] top-[64%] rotate-5'>
+              <a href='https://gamedevmcgill.ca/' target='_blank' class='cursor-default' onclick={() => {
+                if (audioOn()) {
+                  clickAudioComponent.volume = 0.1;
+                  clickAudioComponent.play();
+                }
+              }}>
+                <img src='../src/assets/gdm.png' />
+              </a>
+            </div>
             <div class='w-full h-full bg-neutral-800/90 flex flex-col items-center justify-center px-8 border-x-14 border-neutral-600/50'>
               <img src='../src/assets/resumeGT.png' class='max-w-full h-14/15 pb-4' />
               <div class='flex flex-row text-4xl'>
-                <a href='https://www.linkedin.com/in/v-chu/' target='_blank' class='cursor-default'>
+                <a href='https://www.linkedin.com/in/v-chu/' target='_blank' class='cursor-default' onclick={() => {
+                  if (audioOn()) {
+                    clickAudioComponent.volume = 0.1;
+                    clickAudioComponent.play();
+                  }
+                }}>
                   <i class='ph-bold ph-linkedin-logo text-neutral-600 hover:text-neutral-500 pr-4' />
                 </a>
-                <a href='https://github.com/justness' target='_blank' class='cursor-default'>
+                <a href='https://github.com/justness' target='_blank' class='cursor-default' onclick={() => {
+                  if (audioOn()) {
+                    clickAudioComponent.volume = 0.1;
+                    clickAudioComponent.play();
+                  }
+                }}>
                   <i class='ph-bold ph-github-logo text-neutral-600 hover:text-neutral-500 pr-4' />
                 </a>
-                <a href='../src/assets/resumeGT.pdf' download="NessChu_Resume.pdf" class='cursor-default'>
+                <a href='https://justness.itch.io/' target='_blank' class='cursor-default' onclick={() => {
+                  if (audioOn()) {
+                    clickAudioComponent.volume = 0.1;
+                    clickAudioComponent.play();
+                  }
+                }}>
+                  <i class='ph-bold ph-game-controller text-neutral-600 hover:text-neutral-500 pr-4' />
+                </a>
+                <a href='../src/assets/resumeGT.pdf' download="NessChu_Resume.pdf" class='cursor-default' onclick={() => {
+                  if (audioOn()) {
+                    clickAudioComponent.volume = 0.1;
+                    clickAudioComponent.play();
+                  }
+                }}>
                   <i class='ph-bold ph-download-simple text-neutral-600 hover:text-neutral-500 pr-4' />
                 </a>
               </div>
