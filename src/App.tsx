@@ -5,7 +5,8 @@ import clickAudio from './assets/click.ogg';
 import keyPressAudio from './assets/keyPress.ogg';
 import tapAudio from './assets/ceramicTap.wav';
 import dialogueJson from './dialogue.json';
-import type { Dialogue } from "./Dialogue";
+import profilesJson from './profiles.json';
+import type { Dialogue, Profile } from "./Dialogue";
 
 // Goal: Simulate dialogue in order to introduce myself, and converse on topics with branching points of discussion
 
@@ -42,6 +43,13 @@ function App() {
     const map = new Map<string, Dialogue>();
     dialogueJson.dialogue.forEach((d) => {
       map.set(d.id, d as Dialogue);
+    });
+    return map;
+  });
+  const profilesDictionary = createMemo(() => {
+    const map = new Map<string, Profile>();
+    profilesJson.profiles.forEach((p) => {
+      map.set(p.id, p as Profile);
     });
     return map;
   });
@@ -222,8 +230,7 @@ function App() {
                       {
                         (content) =>
                           <div class={`font-serif ${index() === currentDialogue().length - 1 ? 'text-neutral-400' : 'text-neutral-600'} pb-2`}>
-                            {/* TODO: Dictionary of characters/skills and colours to set with style */}
-                            <b>{content.pov ? content.pov + ' - ' : ''}</b>
+                            <b style={content.pov ? {'color': profilesDictionary().get(content.pov)?.color ?? 'oklch(0.439 0 0)'} : {}}>{content.pov ? content.pov + ' - ' : ''}</b>
                             {content.text}
                           </div>
                       }
@@ -236,8 +243,15 @@ function App() {
                     <div class='flex flex-row font-serif text-orange-400 hover:text-orange-200 pb-2' onclick={() => {
                       // TODO: Actually roll and set success/failure depending on difficulty, if difficulty has a value
                       const result = dialogueDictionary().get(option.success);
-                      if (result)
+                      if (result) {
                         setCurrentDialogue([...currentDialogue(), result]);
+                        const speaker = result.content[result.content.length - 1].pov;
+                        if (speaker) {
+                          setNpcPfp(profilesDictionary().get(speaker)?.pfp ?? '');
+                        } else {
+                          setNpcPfp('');
+                        }
+                      }
                     }}>
                       <p class='text-white'>
                         {(index()+1)+'.-'}
@@ -250,6 +264,7 @@ function App() {
                 <div class='flex flex-row text-white text-2xl bg-red-800 pl-4 pt-2 items-center' onclick={() => {
                   // Default state after tutorial
                   setCurrentDialogue([dialogueJson.dialogue[1]]);
+                  setNpcPfp('');
                 }}>
                   CONTINUE
                   <i class='ph-bold ph-caret-right pl-1 pt-1' />

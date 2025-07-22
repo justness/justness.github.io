@@ -16,3 +16,9 @@ export class FancyText {
     pov?: string;
     skill?: string;
 }
+
+export class Profile {
+    id: string;
+    color?: string;
+    pfp?: string;
+}

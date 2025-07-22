@@ -2,18 +2,18 @@
     "dialogue": [
         {
             "id": "tutorial",
-            "content": [{"text": "initial test content blah blah blah blah blah", "pov": "test_char"}],
+            "content": [{"text": "initial test content blah blah blah blah blah"}],
             "options": [{"success": "intro_1_success", "failure": "intro_1_failure"}, {"success": "intro_2_success", "failure": "intro_2_failure"}, {"success": "intro_3_success", "failure": "intro_3_failure"}]
         },
         {
             "id": "intro",
-            "content": [{"text": "initial test content blah blah blah blah blah", "pov": "test_char"}],
+            "content": [{"text": "initial test content blah blah blah blah blah"}],
             "options": [{"success": "intro_1_success", "failure": "intro_1_failure"}, {"success": "intro_2_success", "failure": "intro_2_failure"}, {"success": "intro_3_success", "failure": "intro_3_failure"}]
         },
         {
             "id": "intro_1_success",
             "optionText": "first option text",
-            "content": [{"text": "initial test content blah blah blah blah blah"}],
+            "content": [{"text": "initial test content blah blah blah blah blah", "pov": "test_angel"}],
             "options": []
         },
         {
