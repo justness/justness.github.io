@@ -1,18 +1,32 @@
-import { createEffect, createSignal, For, onCleanup, onMount, Show } from "solid-js";
+import { createEffect, createMemo, createSignal, For, onCleanup, onMount, Show } from "solid-js";
 import bkgAudio from './assets/BackbayLounge.mp3';
 import gearAudio from './assets/gear.wav';
 import clickAudio from './assets/click.ogg';
 import keyPressAudio from './assets/keyPress.ogg';
 import tapAudio from './assets/ceramicTap.wav';
+import dialogueJson from './dialogue.json';
+import type { Dialogue } from "./Dialogue";
+
+// Goal: Simulate dialogue in order to introduce myself, and converse on topics with branching points of discussion
 
 function App() {
-  const currentTime = new Date();
+  let timeRef!: HTMLDivElement;
+
+  let today = new Date();
+  const currentTime = () => {
+    const now = new Date();
+    today = now;
+    const hours = now.getHours();
+    const minutesRaw = now.getMinutes();
+    const minutes = minutesRaw < 10 ? "0" + minutesRaw : minutesRaw;
+    timeRef.innerHTML = hours + ":" + minutes;
+    setTimeout(currentTime, 60000);
+  };
   const [scrollProgress, setScrollProgress] = createSignal<number>(2.5);
   const [portfolioOpen, setPortfolioOpen] = createSignal<boolean>(false);
   const [contactOpen, setContactOpen] = createSignal<boolean>(false);
   const [resumeOpen, setResumeOpen] = createSignal<boolean>(false);
 
-  const [initialDarkness, setInitialDarkness] = createSignal<boolean>(true);
   const [npcPfp, setNpcPfp] = createSignal<string>('');
   const [showSuccess, setShowSuccess] = createSignal<boolean>(false);
   const [showFailure, setShowFailure] = createSignal<boolean>(false);
@@ -20,6 +34,17 @@ function App() {
   const [audioOn, setAudioOn] = createSignal<boolean>(true);
   const [queuedBarks, setQueuedBarks] = createSignal<string[]>([]);
   const [removingBark, setRemovingBark] = createSignal<boolean>(false);
+
+  // Queue dialogue per path, clear on thought completion
+  // Clicking a dialogue option looks up the response in the 
+  const [currentDialogue, setCurrentDialogue] = createSignal<Dialogue[]>([dialogueJson.dialogue[0]]);
+  const dialogueDictionary = createMemo(() => {
+    const map = new Map<string, Dialogue>();
+    dialogueJson.dialogue.forEach((d) => {
+      map.set(d.id, d as Dialogue);
+    });
+    return map;
+  });
 
   let bkgAudioComponent!: HTMLAudioElement;
   let gearAudioComponent!: HTMLAudioElement;
@@ -88,7 +113,7 @@ function App() {
         <audio ref={keyPressAudioComponent} src={keyPressAudio} />
         <audio ref={tapAudioComponent} src={tapAudio} />
         <div class='w-full h-full flex items-center justify-center bg-black'>
-          <Show when={!initialDarkness()}>
+          <Show when={!currentDialogue()[0].id.includes('tutorial')}>
             <div class='w-full h-full mt-[40%] flex items-center justify-center origin-center scale-x-225'>
               <div class='w-[75vh] h-3/4 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center' style={{
                 'background-image': "url('../src/assets/grass.jpg')",
@@ -124,8 +149,7 @@ function App() {
                 }}/>
               </Show>
               <i class='ph-duotone ph-arrow-counter-clockwise mr-2 hover:text-neutral-500' onclick={()=>{
-                // TODO: Reset state
-
+                setCurrentDialogue([dialogueJson.dialogue[0]]);
                 if (audioOn()) {
                   clickAudioComponent.volume = 0.1;
                   clickAudioComponent.play();
@@ -136,44 +160,46 @@ function App() {
         </div>
         <Show when={showFailure()}>
           <div class='w-full h-full absolute' style={{
-            background: 'rgba(0, 0, 0, 0) radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 60%, rgba(255, 115, 115, 1) 100%)',
+            background: 'rgba(0, 0, 0, 0) radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 75%, rgba(255, 115, 115, 1) 100%)',
           }}/>
           <div class='w-full h-full absolute' style={{
-            background: 'rgba(0, 0, 0, 0) radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 60%, rgba(115, 0, 0, 1) 100%)',
+            background: 'rgba(0, 0, 0, 0) radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 75%, rgba(115, 0, 0, 1) 100%)',
           }}/>
         </Show>
         <Show when={showSuccess()}>
           <div class='w-full h-full absolute' style={{
-            background: 'rgba(0, 0, 0, 0) radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 60%, rgba(255, 115, 115, 1) 100%)',
+            background: 'rgba(0, 0, 0, 0) radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 75%, rgba(255, 115, 115, 1) 100%)',
           }}/>
           <div class='w-full h-full absolute' style={{
-            background: 'rgba(0, 0, 0, 0) radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 60%, rgba(115, 255, 115, 1) 100%)',
+            background: 'rgba(0, 0, 0, 0) radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 75%, rgba(115, 255, 115, 1) 100%)',
           }}/>
           
         </Show>
         {/* TODO: Replace placeholder image */}
-        <div title='https://picrew.me/ja/image_maker/197705' class='absolute flex bg-clip-content bg-no-repeat bg-cover bg-center bg-orange-300 w-1/12 h-1/4 rotate-y-180 left-0 bottom-0 border-14 border-neutral-800/90 items-center justify-center text-red-400' style={{
-          'background-image': "url('../src/assets/pfp.png')",
-        }} onclick={() => {
-          if (audioOn()) {
-            tapAudioComponent.volume = 0.1;
-            tapAudioComponent.play();
-          }
-          setQueuedBarks([...queuedBarks(), barks[Math.round(Math.random() * (barks.length -1))]]);
-        }}
-        />
-        <For each={queuedBarks()}>
-          {(bark) => 
-            <div class='absolute flex w-content h-content text-neutral-800 text-md p-2 bg-neutral-200/90 border border-neutral-400 rounded-full'
-              style={{
-                left: Math.random()*(12-6) + '%',
-                bottom: Math.random()*(60-40) + '%',
-              }}
-            >
-              {bark}
-            </div>
-          }
-        </For>
+        <Show when={!currentDialogue()[0].id.includes('tutorial')} >
+          <div title='https://picrew.me/ja/image_maker/197705' class='absolute flex bg-clip-content bg-no-repeat bg-cover bg-center bg-orange-300 w-1/12 h-1/4 rotate-y-180 left-0 bottom-0 border-14 border-neutral-800/90 items-center justify-center text-red-400' style={{
+            'background-image': "url('../src/assets/pfp.png')",
+          }} onclick={() => {
+            if (audioOn()) {
+              tapAudioComponent.volume = 0.1;
+              tapAudioComponent.play();
+            }
+            setQueuedBarks([...queuedBarks(), barks[Math.round(Math.random() * (barks.length -1))]]);
+          }}
+          />
+          <For each={queuedBarks()}>
+            {(bark) => 
+              <div class='absolute flex w-content h-content text-neutral-800 text-md p-2 bg-neutral-200/90 border border-neutral-400 rounded-full'
+                style={{
+                  left: Math.random()*(12-6) + '%',
+                  bottom: Math.random()*(60-40) + '%',
+                }}
+              >
+                {bark}
+              </div>
+            }
+          </For>
+        </Show>
         {/* <div class='absolute flex w-1/12 h-1/4 left-1/11 bottom-0 border-14 border-neutral-800/90 items-center justify-center text-red-400'>
           Cats pic
         </div> */}
@@ -189,21 +215,46 @@ function App() {
               // TODO: Fix for varying screen sizes
               setScrollProgress(((e.currentTarget.scrollTop / (e.currentTarget.scrollHeight - e.currentTarget.clientHeight)) * 100)+4);
             }}>
-              <div class='font-serif text-neutral-600 pb-2'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam velit lectus, finibus ac accumsan et, tincidunt eu sem.
-              </div>
-              <div class='font-serif text-neutral-600 pb-2'>
-                Aliquam turpis ex, porta vitae massa a, sagittis dapibus diam. Integer rutrum turpis dolor, et convallis nisi aliquam ut. Sed nec orci quis nulla tempus porta.
-              </div>
-              <div class='font-serif text-neutral-600 pb-2'>
-                Fusce nec odio vitae mi eleifend mattis ac id nunc. Donec vestibulum urna in augue ullamcorper blandit. Maecenas erat turpis, pulvinar ut dictum at, ullamcorper vel libero. In hac habitasse platea dictumst. Praesent laoreet erat nec pulvinar congue.
-              </div>
-              <div class='font-serif text-neutral-600 pb-2'>
-                Fusce varius mollis lacus, egestas malesuada elit gravida sit amet.
-              </div>
-              <div class='font-serif text-neutral-400'>
-                Fusce blandit gravida tellus, ut blandit nulla vestibulum at. Mauris a ante et nisl tempor rutrum nec sit amet felis.
-              </div>
+              <For each={currentDialogue()}>
+                {
+                  (dialogue, index) => 
+                    <For each={dialogue.content}>
+                      {
+                        (content) =>
+                          <div class={`font-serif ${index() === currentDialogue().length - 1 ? 'text-neutral-400' : 'text-neutral-600'} pb-2`}>
+                            {/* TODO: Dictionary of characters/skills and colours to set with style */}
+                            <b>{content.pov ? content.pov + ' - ' : ''}</b>
+                            {content.text}
+                          </div>
+                      }
+                    </For>
+                }
+              </For>
+              <For each={currentDialogue()[currentDialogue().length - 1].options}>
+                {
+                  (option, index) =>
+                    <div class='flex flex-row font-serif text-orange-400 hover:text-orange-200 pb-2' onclick={() => {
+                      // TODO: Actually roll and set success/failure depending on difficulty, if difficulty has a value
+                      const result = dialogueDictionary().get(option.success);
+                      if (result)
+                        setCurrentDialogue([...currentDialogue(), result]);
+                    }}>
+                      <p class='text-white'>
+                        {(index()+1)+'.-'}
+                      </p>&nbsp;
+                      {dialogueDictionary().get(option.success)?.optionText}
+                    </div>
+                }
+              </For>
+              <Show when={currentDialogue()[currentDialogue().length - 1].options.length === 0}>
+                <div class='flex flex-row text-white text-2xl bg-red-800 pl-4 pt-2 items-center' onclick={() => {
+                  // Default state after tutorial
+                  setCurrentDialogue([dialogueJson.dialogue[1]]);
+                }}>
+                  CONTINUE
+                  <i class='ph-bold ph-caret-right pl-1 pt-1' />
+                </div>
+              </Show>
             </div>
             <div class='h-9/10'>
               <div class='flex flex-col h-full items-center'>
@@ -217,76 +268,76 @@ function App() {
             </div>
           </div>
         </div>
-        <div class='absolute flex flex-col w-1/6 h-1/8 bg-neutral-900 right-0 bottom-0 border-t-8 border-neutral-600 justify-center items-center text-neutral-400'>
-          <div class='flex flex-row items-center pb-2'>
-            <i class='ph-duotone ph-diamonds-four pr-1'/>
-            <div class='pr-4'>
-              {(currentTime.getMonth()+1)+'.00'}
+        <Show when={!currentDialogue()[0].id.includes('tutorial')}>
+          <div class='absolute flex flex-col w-1/6 h-1/8 bg-neutral-900 right-0 bottom-0 border-t-8 border-neutral-600 justify-center items-center text-neutral-400'>
+            <div class='flex flex-row items-center pb-2'>
+              <i class='ph-duotone ph-diamonds-four pr-1'/>
+              <div class='pr-4'>
+                {(today.getMonth()+1)+'.00'}
+              </div>
+              <div class='text-center text-4xl pr-4' ref={timeRef}/>
+              <div>
+                {'Day '+today.getDate()}
+              </div>
             </div>
-            <div class='text-center text-4xl pr-4'>
-              {currentTime.getHours()+':'+(currentTime.getMinutes() < 10 ? '0' : '')+currentTime.getMinutes()}
-            </div>
-            <div>
-              {'Day '+currentTime.getDate()}
-            </div>
-          </div>
-          <div class='flex flex-row items-center p-1 overflow-hidden'>
-            <div class='scale-x-[-1] pl-2'>
+            <div class='flex flex-row items-center p-1 overflow-hidden'>
+              <div class='scale-x-[-1] pl-2'>
+                <div class='border border-neutral-600 py-1 px-2 rounded hover:bg-neutral-800'>
+                  <i class='ph-duotone ph-hand-pointing'/>
+                </div>
+              </div>
               <div class='border border-neutral-600 py-1 px-2 rounded hover:bg-neutral-800'>
                 <i class='ph-duotone ph-hand-pointing'/>
               </div>
             </div>
-            <div class='border border-neutral-600 py-1 px-2 rounded hover:bg-neutral-800'>
-              <i class='ph-duotone ph-hand-pointing'/>
+          </div>
+          <div class='absolute flex flex-row w-1/5 h-1/12 bottom-0 right-1/6 bg-neutral-800/90 border-t-8 border-neutral-600 items-center justify-center text-4xl'>
+            {/* <div class={`mr-12 ${!portfolioOpen() && !contactOpen() && !resumeOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
+              setPortfolioOpen(false);
+              setContactOpen(false);
+              setResumeOpen(false);
+              if (audioOn()) {
+                clickAudioComponent.volume = 0.1;
+                clickAudioComponent.play();
+              }
+            }}>
+              <i class='ph-duotone ph-house'/>
+            </div> */}
+            <div class={`mr-12 ${resumeOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
+              setResumeOpen(!resumeOpen());
+              setPortfolioOpen(false);
+              setContactOpen(false);
+              if (audioOn()) {
+                clickAudioComponent.volume = 0.1;
+                clickAudioComponent.play();
+              }
+            }}>
+              <i class='ph-duotone ph-file-text'/>
+            </div>
+            <div class={`mr-12 ${portfolioOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
+              setPortfolioOpen(!portfolioOpen());
+              setContactOpen(false);
+              setResumeOpen(false);
+              if (audioOn()) {
+                clickAudioComponent.volume = 0.1;
+                clickAudioComponent.play();
+              }
+            }}>
+              <i class='ph-duotone ph-briefcase'/>
+            </div>
+            <div class={`${contactOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
+              setContactOpen(!contactOpen());
+              setPortfolioOpen(false);
+              setResumeOpen(false);
+              if (audioOn()) {
+                clickAudioComponent.volume = 0.1;
+                clickAudioComponent.play();
+              }
+            }}>
+              <i class='ph-duotone ph-phone'/>
             </div>
           </div>
-        </div>
-        <div class='absolute flex flex-row w-1/5 h-1/12 bottom-0 right-1/6 bg-neutral-800/90 border-t-8 border-neutral-600 items-center justify-center text-4xl'>
-          {/* <div class={`mr-12 ${!portfolioOpen() && !contactOpen() && !resumeOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
-            setPortfolioOpen(false);
-            setContactOpen(false);
-            setResumeOpen(false);
-            if (audioOn()) {
-              clickAudioComponent.volume = 0.1;
-              clickAudioComponent.play();
-            }
-          }}>
-            <i class='ph-duotone ph-house'/>
-          </div> */}
-          <div class={`mr-12 ${resumeOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
-            setResumeOpen(!resumeOpen());
-            setPortfolioOpen(false);
-            setContactOpen(false);
-            if (audioOn()) {
-              clickAudioComponent.volume = 0.1;
-              clickAudioComponent.play();
-            }
-          }}>
-            <i class='ph-duotone ph-file-text'/>
-          </div>
-          <div class={`mr-12 ${portfolioOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
-            setPortfolioOpen(!portfolioOpen());
-            setContactOpen(false);
-            setResumeOpen(false);
-            if (audioOn()) {
-              clickAudioComponent.volume = 0.1;
-              clickAudioComponent.play();
-            }
-          }}>
-            <i class='ph-duotone ph-briefcase'/>
-          </div>
-          <div class={`${contactOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
-            setContactOpen(!contactOpen());
-            setPortfolioOpen(false);
-            setResumeOpen(false);
-            if (audioOn()) {
-              clickAudioComponent.volume = 0.1;
-              clickAudioComponent.play();
-            }
-          }}>
-            <i class='ph-duotone ph-phone'/>
-          </div>
-        </div>
+        </Show>
         <Show when={resumeOpen()} >
           <div class='absolute w-2/5 h-full flex items-center justify-center'>
             <div class='relative mt-[-90vh] mr-2 w-12 h-12 flex items-center justify-center'>
