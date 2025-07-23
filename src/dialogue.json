@@ -18,7 +18,7 @@
                 {"text": "We too, will vanish one day. But I am grateful that our paths have crossed."},
                 {"text": "Nothing can undo this moment now. Nothing will unspeak the words on this screen."},
                 {"text": "We will live forever in this moment: my website on your screen, in this place, at this time. Your presence, loading this page, clicking these options, firing requests into the ether and touching the web of humanity itself."},
-                {"text": "Our thread has been woven into the cloth of god and the knot has been pulled tight."}
+                {"text": "Our thread has been woven into the cloth of god and the knot pulled tight."}
             ],
             "options": [{"optionText": "Got it.", "success": "tutorial_end"}]
         },
@@ -35,9 +35,90 @@
             "options": []
         },
         {
+            "id": "error",
+            "content": [
+                {"text": "That's weird... There doesn't seem to be a response for this one yet."},
+                {"text": "Let's head back to the main menu."}
+            ],
+            "options": []
+        },
+        {
             "id": "intro",
-            "content": [{"text": "initial test content blah blah blah blah blah"}],
-            "options": [{"optionText": "test1", "success": "intro_1_success", "failure": "intro_1_failure"}, {"optionText": "test2", "success": "intro_2_success", "failure": "intro_2_failure"}, {"optionText": "test3", "success": "intro_3_success", "failure": "intro_3_failure"}]
+            "content": [
+                {"text": "You’ve arrived in a strange milieu. This could be an adventure, or it could be like pulling teeth. Let’s try to avoid the latter."},
+                {"text": "What are you here for?"}
+            ],
+            "options": [
+                {"optionText": "I’m here professionally. Give me everything career-related on Ness.", "success": "intro_professional"},
+                {"optionText": "What about career-unrelated things?", "success": "intro_personal"},
+                {"optionText": "I’m here recreationally. Give me the adventure.", "success": "intro_recreational"},
+                {"optionText": "What’s strange about this milieu?", "success": "intro_milieu"}
+            ]
+        },
+        {
+            "id": "intro_professional",
+            "content": [
+                {"text": "A good starting point would be the three buttons below this wall of text that look like a document, a briefcase, and a phone."},
+                {"text": "The document will pop open Ness’s current resume, with links to past companies and education, as well as links to their LinkedIn, GitHub, and itch.io profiles."},
+                {"text": "The briefcase will open a brief portfolio with screencaps, descriptions and links to Ness's past projects."},
+                {"text": "The phone will open a list of options to contact Ness directly."}
+            ],
+            "options": [
+                {"optionText": "What's LinkedIn? GitHub? itch.io?", "success": "intro_professional_explanation"},
+                {"optionText": "What's your current status?", "success": "intro_professional_status"},
+                {"optionText": "What are you looking for?", "success": "intro_professional_looking"},
+                {"optionText": "[Go back]", "success": "intro"}
+
+            ]
+        },
+        {
+            "id": "intro_professional_explanation",
+            "content": [
+                {"text": "LinkedIn: Connect with me here, check for any overlaps in our networks, and start a direct chat."},
+                {"text": "GitHub: View my history of code contributions."},
+                {"text": "itch.io: Preview video game projects and demos I've worked on."}
+            ],
+            "options": [{"optionText": "[Go back]", "success": "intro_professional"}]
+        },
+        {
+            "id": "intro_professional_status",
+            "content": [
+                {"text": "I am currently between jobs and searching for my next big project."},
+                {"text": "Please reach out if you have any ideas, and I will get back to you if I feel that there is a match!"},
+                {"text": "Otherwise, I am taking some much needed time to grind out some personal coding projects (including old game dev prototypes), D&D campaigns, and local volunteer work."}
+            ],
+            "options": [{"optionText": "[Go back]", "success": "intro_professional"}]
+        },
+        {
+            "id": "intro_professional_looking",
+            "content": [
+                {"text": "I'm looking for roles where I can grow, whether that involves pivoting from software development to project management, development under leadership that can provide mentorship, or if a rare opportunity arises, the ability to work professionaly in game development."},
+                {"text": "I like to work on teams where there is diversity and respect for varying perspectives, meaningful goals the entire team can be passionate towards, and an environment where my contributions can have significant impact on the end product."}
+            ],
+            "options": [{"optionText": "[Go back]", "success": "intro_professional"}]
+        },
+        {
+            "id": "intro_personal",
+            "content": [
+                {"text": "Well, what do you want to know?"}
+            ],
+            "options": [
+                {"optionText": "What is your favourite [xyz]?", "success": "favourites"},
+                {"optionText": "What media do you consume?", "success": "media"},
+                {"optionText": "Do you have any pets?", "success": "pets"},
+                {"optionText": "What are your thoughts on the innate human morality?", "success": "morality"},
+                {"optionText": "[Next page]", "success": "intro_personal2"}
+            ]
+        },
+        {
+            "id": "intro_personal2",
+            "content": [
+                {"text": ""}
+            ],
+            "options": [
+                {"optionText": "Hardcore!", "success": "hardcore_1"},
+                {"optionText": "[Go back]", "success": "intro"}
+            ]
         }
     ]
 }

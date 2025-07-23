@@ -132,17 +132,19 @@ function App() {
         <audio ref={tapAudioComponent} src={tapAudio} />
         <div class='w-full h-full flex items-center justify-center bg-black'>
           <Show when={!currentDialogue()[0].id.includes('tutorial')}>
-            <div class='w-full h-full mt-[40%] flex items-center justify-center origin-center scale-x-225'>
-              <div class='w-[75vh] h-3/4 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center' style={{
-                'background-image': "url('../src/assets/grass.jpg')",
+            <div class='w-full h-full flex items-center justify-center'> {/* TODO: Mask this div if necessary */}
+              <div class='w-full h-full mt-[40%] flex items-center justify-center origin-center scale-x-225'>
+                <div class='w-[75vh] h-3/4 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center' style={{
+                  'background-image': "url('../src/assets/grass.jpg')",
+                }}/>
+              </div>
+              <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain -skew-y-24 mr-[50vw] mb-[6.5%]' style={{
+                'background-image': "url('../src/assets/brickWall.jpg')",
+              }}/>
+              <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain skew-y-24 ml-[50vw] mb-[6.5%]' style={{
+                'background-image': "url('../src/assets/fence.png')",
               }}/>
             </div>
-            <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain -skew-y-24 mr-[50vw] mb-[6.5%]' style={{
-              'background-image': "url('../src/assets/brickWall.jpg')",
-            }}/>
-            <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain skew-y-24 ml-[50vw] mb-[6.5%]' style={{
-              'background-image': "url('../src/assets/fence.png')",
-            }}/>
           </Show>
         </div>
         <div class='absolute flex flex-row left-0 top-0 p-4 text-neutral-600 text-4xl items-center justify-center'>
@@ -221,7 +223,7 @@ function App() {
         {/* <div class='absolute flex w-1/12 h-1/4 left-1/11 bottom-0 border-14 border-neutral-800/90 items-center justify-center text-red-400'>
           Cats pic
         </div> */}
-        <div class='absolute w-1/4 h-9/10 right-1/10 bg-neutral-800/90 px-16 py-36 border-14 border-t-0 border-neutral-400/50 border-b-8 border-b-neutral-600'>
+        <div class={`absolute w-1/4 h-9/10 right-1/10 ${!currentDialogue()[0].id.includes('tutorial') && 'bg-neutral-800/90 border-14 border-t-0 border-neutral-400/50 border-b-8 border-b-neutral-600'} px-16 py-36`}>
           {/* TODO: Replace placeholder image */}
           <Show when={npcPfp().length > 0}>
             <div title='https://picrew.me/ja/image_maker/197705' class='absolute bg-clip-content bg-no-repeat bg-cover bg-center bg-lime-950 start-[-25%] w-1/3 h-1/4 border-14 border-neutral-900' style={{
@@ -236,7 +238,7 @@ function App() {
               <For each={currentDialogue()}>
                 {
                   (dialogue, index) => 
-                    <For each={dialogue.content}>
+                    <For each={dialogue.content.filter((c) => c.text.length > 0)}>
                       {
                         (content) =>
                           <div class={`font-serif ${index() === currentDialogue().length - 1 ? 'text-neutral-400' : 'text-neutral-600'} pb-2`}>
@@ -253,18 +255,30 @@ function App() {
                     <div class='flex flex-row font-serif text-orange-400 hover:text-orange-200 pb-2' onclick={() => {
                       // TODO: Actually roll and set success/failure depending on difficulty, if difficulty has a value
                       const result = dialogueDictionary().get(option.success);
-                      if (result) {
-                        setCurrentDialogue([...currentDialogue(), result]);
-                        const speaker = result.content[result.content.length - 1].pov;
-                        if (speaker) {
-                          setNpcPfp(profilesDictionary().get(speaker)?.pfp ?? '');
-                        } else {
+                      if (option.success === 'intro') {
+                        if (result){
+                          setCurrentDialogue([result]);
                           setNpcPfp('');
+                          return;
                         }
                       }
+                      if (!result) {
+                        const error = dialogueDictionary().get('error');
+                        if (!error) return;
+                        setCurrentDialogue([error]);
+                        setNpcPfp('');
+                        return;
+                      }
+                      setCurrentDialogue([...currentDialogue(), result]);
+                      const speaker = result.content[result.content.length - 1].pov;
+                      if (speaker) {
+                        setNpcPfp(profilesDictionary().get(speaker)?.pfp ?? '');
+                      } else {
+                        setNpcPfp('');
+                      }
                       setTimeout(() => {
-                        textContainer.scrollTop = textContainer.scrollHeight;
-                      })
+                        textContainer.scrollTo({top: textContainer.scrollHeight, behavior: 'smooth'});
+                      });
                     }}>
                       <p class='text-white'>
                         {(index()+1)+'.-'}
@@ -288,12 +302,19 @@ function App() {
             </div>
             <div class='h-9/10'>
               <div class='flex flex-col h-full items-center'>
-                <i class='ph-bold ph-caret-up text-neutral-500'/>
-                <div class={`absolute w-3 h-3 rounded-full bg-neutral-200 justify-self-center`} style={{
-                  'margin-top': (scrollProgress()) +'%',
+                <i class='ph-bold ph-caret-up text-neutral-500' onclick={() => {
+                  if (textContainer.scrollTop > 0 && textContainer.scrollTop < 20) textContainer.scrollTop = 0;
+                  else if (textContainer.scrollTop > 0) textContainer.scrollTop -= 20;
                 }}/>
-                <div class='w-[1px] h-full rounded bg-neutral-600'/>
-                <i class='ph-bold ph-caret-down text-neutral-500'/>
+                {/* TODO: Fix scroll thumb */}
+                {/* <div class={`absolute w-3 h-3 rounded-full bg-neutral-200 justify-self-center`} style={{
+                  'margin-top': (scrollProgress()) +'%',
+                }}/> */}
+                <div class='w-[1px] h-full'/> {/* bg-neutral-600 */}
+                <i class='ph-bold ph-caret-down text-neutral-500' onclick={() => {
+                  if (textContainer.scrollTop < textContainer.scrollHeight && textContainer.scrollTop > textContainer.scrollHeight - 20) textContainer.scrollTop = textContainer.scrollHeight;
+                  else if (textContainer.scrollTop < textContainer.scrollHeight) textContainer.scrollTop += 20;
+                }}/>
               </div>
             </div>
           </div>
