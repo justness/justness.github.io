@@ -391,31 +391,84 @@ function App() {
             </div>
           </div>
         </Show>
-        <Show when={resumeOpen()} >
+        <Show when={contactOpen()}>
           <div class='absolute w-2/5 h-full flex items-center justify-center'>
             <div class='relative mt-[-90vh] mr-2 w-12 h-12 flex items-center justify-center'>
-              <i class='ph-bold ph-arrow-u-up-left text-neutral-600 hover:text-neutral-500 text-4xl' onclick={() => {
-                setResumeOpen(false);
-                if (audioOn()) {
-                  clickAudioComponent.volume = 0.1;
-                  clickAudioComponent.play();
-                }
-              }} />
-            </div>
-            <div class='absolute w-100 -rotate-90 rotate-x-180 text-3xl text-neutral-700 right-[-22%] top-30'>
-              RESUME • GENERAL TECH
-            </div>
-            <div class='absolute w-12 h-12 scale-x-250 -rotate-5 transition duration-150 ease-in-out border-1 border-neutral-400 border-dashed rounded-full p-2 left-[10%] top-[21%]'/>
-              <a href='https://macro.com/' target='_blank' class='cursor-default' onclick={() => {
+              <div class='flex flex-col group items-center justify-center text-neutral-600 hover:text-neutral-500' onclick={() => {
+                setContactOpen(false);
                 if (audioOn()) {
                   clickAudioComponent.volume = 0.1;
                   clickAudioComponent.play();
                 }
               }}>
-                <div class='absolute flex items-center justify-center max-w-24 hover:scale-120 transition duration-150 ease-in-out border-4 border-blue-600 rounded-full p-1 left-[10%] top-[20%]'>
-                  <div class='w-2 h-2 bg-white rounded-full'/>
+                <i class='ph-bold ph-arrow-u-up-left text-4xl'/>
+                <div class='text-sm -mt-1'>
+                  ESC
                 </div>
-              </a>
+              </div>
+            </div>
+            <div class='absolute w-100 -rotate-90 rotate-x-180 text-3xl text-neutral-700 right-[-22%] -top-10'>
+              CONTACT ME
+            </div>
+            <div class='w-full h-full bg-neutral-800/90 flex flex-col items-center justify-center px-8 border-x-14 border-neutral-600/50'>
+              {/* TODO: Set up page contents */}
+            </div>
+          </div>
+        </Show>
+        <Show when={portfolioOpen()}>
+          <div class='absolute w-2/5 h-full flex items-center justify-center'>
+            <div class='relative mt-[-90vh] mr-2 w-12 h-12 flex items-center justify-center'>
+              <div class='flex flex-col group items-center justify-center text-neutral-600 hover:text-neutral-500' onclick={() => {
+                setPortfolioOpen(false);
+                if (audioOn()) {
+                  clickAudioComponent.volume = 0.1;
+                  clickAudioComponent.play();
+                }
+              }}>
+                <i class='ph-bold ph-arrow-u-up-left text-4xl'/>
+                <div class='text-sm -mt-1'>
+                  ESC
+                </div>
+              </div>
+            </div>
+            <div class='absolute w-100 -rotate-90 rotate-x-180 text-3xl text-neutral-700 right-[-22%] top-15'>
+              PROJECT PORTFOLIO
+            </div>
+            <div class='w-full h-full bg-neutral-800/90 flex flex-col items-center justify-center px-8 border-x-14 border-neutral-600/50'>
+              {/* TODO: Set up page contents */}
+            </div>
+          </div>
+        </Show>
+        <Show when={resumeOpen()} >
+          <div class='absolute w-2/5 h-full flex items-center justify-center'>
+            <div class='relative mt-[-90vh] mr-2 w-12 h-12 flex items-center justify-center'>
+              <div class='flex flex-col group items-center justify-center text-neutral-600 hover:text-neutral-500' onclick={() => {
+                setResumeOpen(false);
+                if (audioOn()) {
+                  clickAudioComponent.volume = 0.1;
+                  clickAudioComponent.play();
+                }
+              }}>
+                <i class='ph-bold ph-arrow-u-up-left text-4xl'/>
+                <div class='text-sm -mt-1'>
+                  ESC
+                </div>
+              </div>
+            </div>
+            <div class='absolute w-100 -rotate-90 rotate-x-180 text-3xl text-neutral-700 right-[-22%] top-30'>
+              RESUME • GENERAL TECH
+            </div>
+            <div class='absolute w-12 h-12 scale-x-250 -rotate-5 transition duration-150 ease-in-out border-1 border-neutral-400 border-dashed rounded-full p-2 left-[10%] top-[21%]'/>
+            <a href='https://macro.com/' target='_blank' class='cursor-default' onclick={() => {
+              if (audioOn()) {
+                clickAudioComponent.volume = 0.1;
+                clickAudioComponent.play();
+              }
+            }}>
+              <div class='absolute flex items-center justify-center max-w-24 hover:scale-120 transition duration-150 ease-in-out border-4 border-blue-600 rounded-full p-1 left-[10%] top-[20%]'>
+                <div class='w-2 h-2 bg-white rounded-full'/>
+              </div>
+            </a>
             <div class='absolute w-12 h-12 scale-x-250 rotate-5 transition duration-150 ease-in-out border-1 border-neutral-400 border-dashed rounded-full p-2 left-[5%] top-[47%]'/>
             <a href='https://montreal.ubisoft.com/en/' target='_blank' class='cursor-default' onclick={() => {
               if (audioOn()) {
