@@ -11,19 +11,8 @@ import type { Dialogue, Profile } from "./Dialogue";
 // Goal: Simulate dialogue in order to introduce myself, and converse on topics with branching points of discussion
 
 function App() {
-  let timeRef!: HTMLDivElement;
   let textContainer!: HTMLDivElement;
 
-  let today = new Date();
-  const currentTime = () => {
-    const now = new Date();
-    today = now;
-    const hours = now.getHours();
-    const minutesRaw = now.getMinutes();
-    const minutes = minutesRaw < 10 ? "0" + minutesRaw : minutesRaw;
-    timeRef.innerHTML = hours + ":" + minutes;
-    setTimeout(currentTime, 60000);
-  };
   const [scrollProgress, setScrollProgress] = createSignal<number>(2.5);
   const [portfolioOpen, setPortfolioOpen] = createSignal<boolean>(false);
   const [contactOpen, setContactOpen] = createSignal<boolean>(false);
@@ -36,6 +25,26 @@ function App() {
   const [audioOn, setAudioOn] = createSignal<boolean>(true);
   const [queuedBarks, setQueuedBarks] = createSignal<string[]>([]);
   const [removingBark, setRemovingBark] = createSignal<boolean>(false);
+  const [currentTime, setCurrentTime] = createSignal<string>('');
+  const [currentDate, setCurrentDate] = createSignal<Date>(new Date());
+  const [needTimeUpdate, setNeedTimeUpdate] = createSignal<boolean>(true);
+
+
+  createEffect(() => {
+    if (needTimeUpdate()) {
+      const now = new Date();
+      setCurrentDate(now);
+      const hours = now.getHours();
+      const minutesRaw = now.getMinutes();
+      const minutes = minutesRaw < 10 ? "0" + minutesRaw : minutesRaw;
+      setCurrentTime(hours + ":" + minutes);
+      setNeedTimeUpdate(false);
+    }
+  })
+
+  setInterval(function() {
+    setNeedTimeUpdate(true);
+  }, 60 * 1000);
 
   // Queue dialogue per path, clear on thought completion
   // Clicking a dialogue option looks up the response in the 
@@ -294,11 +303,13 @@ function App() {
             <div class='flex flex-row items-center pb-2'>
               <i class='ph-duotone ph-diamonds-four pr-1'/>
               <div class='pr-4'>
-                {(today.getMonth()+1)+'.00'}
+                {(currentDate().getMonth()+1)+'.00'}
               </div>
-              <div class='text-center text-4xl pr-4' ref={timeRef}/>
+              <div class='text-center text-4xl pr-4'>
+                {currentTime()}
+              </div>
               <div>
-                {'Day '+today.getDate()}
+                {'Day '+currentDate().getDate()}
               </div>
             </div>
             <div class='flex flex-row items-center p-1 overflow-hidden'>
