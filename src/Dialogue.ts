@@ -1,12 +1,12 @@
 export class Dialogue {
     id: string;
-    optionText?: string; // Text for option that navigates to this dialogue
     difficulty?: number;
     content: FancyText[];
     options: SuccessFailure[];
 }
 
 export class SuccessFailure {
+    optionText: string;
     success: string;
     failure?: string;
 }

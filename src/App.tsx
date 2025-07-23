@@ -260,7 +260,7 @@ function App() {
                       <p class='text-white'>
                         {(index()+1)+'.-'}
                       </p>&nbsp;
-                      {dialogueDictionary().get(option.success)?.optionText}
+                      {option.optionText}
                     </div>
                 }
               </For>

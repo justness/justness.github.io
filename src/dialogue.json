@@ -3,80 +3,41 @@
         {
             "id": "tutorial",
             "content": [
-                {"text": "A whisper in the dark. Whether you’ve stumbled upon your way here or seeked us out willingly, the ghost welcomes you to explore the depths of this transient space."},
+                {"text": "A whisper in the dark. Whether you’ve stumbled upon your way here or sought us out willingly, the ghost welcomes you to explore the depths of this transient space."},
                 {"text": "There will come a day where these words exist in a void for no eyes to see. Better yet, they will be replaced by new text that intends to speak louder and truer than we ever could."}
             ],
-            "options": [{"success": "tutorial_sad"}, {"success": "tutorial_clarification"}, {"success": "tutorial_end"}]
+            "options": [
+                {"optionText": "That seems sad...", "success": "tutorial_sad"}, 
+                {"optionText": "What does that even mean?", "success": "tutorial_clarification"}, 
+                {"optionText": "Makes sense.", "success": "tutorial_end"}
+            ]
         },
         {
             "id": "tutorial_sad",
-            "optionText": "That seems sad...",
             "content": [
                 {"text": "We too, will vanish one day. But I am grateful that our paths have crossed."},
-                {"text": "Nothing can undo this moment now. Nothing will unspeak the words on this screen. We will live forever in this moment: my website on your screen in this place, at this time. Your presence, loading this page, clicking these options, firing requests into the ether and touching the web of humanity itself. Our thread has been woven into the cloth of god and the knot has been pulled tight."}
+                {"text": "Nothing can undo this moment now. Nothing will unspeak the words on this screen."},
+                {"text": "We will live forever in this moment: my website on your screen, in this place, at this time. Your presence, loading this page, clicking these options, firing requests into the ether and touching the web of humanity itself."},
+                {"text": "Our thread has been woven into the cloth of god and the knot has been pulled tight."}
             ],
-            "options": [{"success": "tutorial_end"}]
-        },
-        {
-            "id": "tutorial_actualSad",
-            "optionText": "Okay, that does seem sad now.",
-            "content": [
-                {"text": "We too, will vanish one day. But I am grateful that our paths have crossed."},
-                {"text": "Nothing can undo this moment now. Nothing will unspeak the words on this screen. We will live forever in this moment: my website on your screen in this place, at this time. Your presence, loading this page, clicking these options, firing requests into the ether and touching the web of humanity itself. Our thread has been woven into the cloth of god and the knot has been pulled tight."}
-            ],
-            "options": [{"success": "tutorial_end"}]
+            "options": [{"optionText": "Got it.", "success": "tutorial_end"}]
         },
         {
             "id": "tutorial_clarification",
-            "optionText": "What does that even mean?",
             "content": [
                 {"text": "All communication will be superseded by future communication. All technology will be superseded by future technology. All experiences are stones on the mountain of the future that will be, built upon the foothills of the history that was."}
             ],
-            "options": [{"success": "tutorial_actualSad"}, {"success": "tutorial_end"}]
+            "options": [{"optionText": "Okay, that does seem sad now.", "success": "tutorial_sad"}, {"optionText": "Got it.", "success": "tutorial_end"}]
         },
         {
             "id": "tutorial_end",
-            "optionText": "Makes sense.",
             "content": [{"text": "Until then, welcome to Ness’s personal site. Please enjoy your stay."}],
             "options": []
         },
         {
             "id": "intro",
             "content": [{"text": "initial test content blah blah blah blah blah"}],
-            "options": [{"success": "intro_1_success", "failure": "intro_1_failure"}, {"success": "intro_2_success", "failure": "intro_2_failure"}, {"success": "intro_3_success", "failure": "intro_3_failure"}]
-        },
-        {
-            "id": "intro_1_success",
-            "optionText": "first option text",
-            "content": [{"text": "initial test content blah blah blah blah blah", "pov": "test_angel"}],
-            "options": []
-        },
-        {
-            "id": "intro_1_failure",
-            "content": [{"text": "initial test content blah blah blah blah blah"}],
-            "options": []
-        },
-        {
-            "id": "intro_2_success",
-            "optionText": "second option text but it's longer so i expect it to overflow and hopefully wrap correctly?",
-            "content": [{"text": "initial test content blah blah blah blah blah"}],
-            "options": []
-        },
-        {
-            "id": "intro_2_failure",
-            "content": [{"text": "initial test content blah blah blah blah blah"}],
-            "options": []
-        },
-        {
-            "id": "intro_3_success",
-            "optionText": "third option text",
-            "content": [{"text": "initial test content blah blah blah blah blah"}],
-            "options": []
-        },
-        {
-            "id": "intro_3_failure",
-            "content": [{"text": "initial test content blah blah blah blah blah"}],
-            "options": []
+            "options": [{"optionText": "test1", "success": "intro_1_success", "failure": "intro_1_failure"}, {"optionText": "test2", "success": "intro_2_success", "failure": "intro_2_failure"}, {"optionText": "test3", "success": "intro_3_success", "failure": "intro_3_failure"}]
         }
     ]
 }
