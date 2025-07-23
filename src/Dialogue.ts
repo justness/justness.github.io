@@ -8,7 +8,7 @@ export class Dialogue {
 
 export class SuccessFailure {
     success: string;
-    failure: string;
+    failure?: string;
 }
 
 export class FancyText {

@@ -12,6 +12,7 @@ import type { Dialogue, Profile } from "./Dialogue";
 
 function App() {
   let timeRef!: HTMLDivElement;
+  let textContainer!: HTMLDivElement;
 
   let today = new Date();
   const currentTime = () => {
@@ -219,7 +220,7 @@ function App() {
             }}/>
           </Show>
           <div class='flex flex-row w-full h-full'>
-            <div class='w-full h-9/10 overflow-hidden overflow-y-scroll' onScroll={(e) => {
+            <div ref={textContainer} class='w-full h-9/10 overflow-hidden overflow-y-scroll' onScroll={(e) => {
               // TODO: Fix for varying screen sizes
               setScrollProgress(((e.currentTarget.scrollTop / (e.currentTarget.scrollHeight - e.currentTarget.clientHeight)) * 100)+4);
             }}>
@@ -252,6 +253,9 @@ function App() {
                           setNpcPfp('');
                         }
                       }
+                      setTimeout(() => {
+                        textContainer.scrollTop = textContainer.scrollHeight;
+                      })
                     }}>
                       <p class='text-white'>
                         {(index()+1)+'.-'}
@@ -261,9 +265,11 @@ function App() {
                 }
               </For>
               <Show when={currentDialogue()[currentDialogue().length - 1].options.length === 0}>
-                <div class='flex flex-row text-white text-2xl bg-red-800 pl-4 pt-2 items-center' onclick={() => {
+                <div class='flex flex-row text-white text-2xl bg-red-800 pl-4 pt-2 mt-2 items-center' onclick={() => {
                   // Default state after tutorial
-                  setCurrentDialogue([dialogueJson.dialogue[1]]);
+                  const intro = dialogueDictionary().get('intro');
+                  if (!intro) return;
+                  setCurrentDialogue([intro]);
                   setNpcPfp('');
                 }}>
                   CONTINUE
