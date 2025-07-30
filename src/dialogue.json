@@ -50,7 +50,7 @@
             ],
             "options": [
                 {"optionText": "I’m here professionally. Give me everything career-related on Ness.", "success": "intro_professional"},
-                {"optionText": "What about career-unrelated things?", "success": "intro_personal"},
+                {"optionText": "What about career-unrelated things?", "success": "intro_personal_1"},
                 {"optionText": "I’m here recreationally. Give me the adventure.", "success": "intro_recreational"},
                 {"optionText": "What’s strange about this milieu?", "success": "intro_milieu"}
             ]
@@ -85,7 +85,7 @@
             "content": [
                 {"text": "I am currently between jobs and searching for my next big project."},
                 {"text": "Please reach out if you have any ideas, and I will get back to you if I feel that there is a match!"},
-                {"text": "Otherwise, I am taking some much needed time to grind out some personal coding projects (including old game dev prototypes), D&D campaigns, and local volunteer work."}
+                {"text": "Otherwise, I am taking some much needed time to grind out some personal coding projects, D&D campaigns, and local volunteer work."}
             ],
             "options": [{"optionText": "[Go back]", "success": "intro_professional"}]
         },
@@ -93,18 +93,18 @@
             "id": "intro_professional_looking",
             "content": [
                 {"text": "I'm looking for roles where I can grow, whether that involves pivoting from software development to project management, development under leadership that can provide mentorship, or if a rare opportunity arises, the ability to work professionaly in game development."},
-                {"text": "I like to work on teams where there is diversity and respect for varying perspectives, meaningful goals the entire team can be passionate towards, and an environment where my contributions can have significant impact on the end product."}
+                {"text": "I like to work on teams where there is diversity of and respect for varying perspectives, meaningful goals the entire team can be passionate towards, and an environment where my contributions can have significant impact on the end product."}
             ],
             "options": [{"optionText": "[Go back]", "success": "intro_professional"}]
         },
         {
-            "id": "intro_personal",
+            "id": "intro_personal_1",
             "content": [
                 {"text": "Well, what do you want to know?"}
             ],
             "options": [
                 {"optionText": "What is your favourite [xyz]?", "success": "favourites"},
-                {"optionText": "What media do you consume?", "success": "media"},
+                {"optionText": "Do you have any video game recommendations?", "success": "video_games_1"},
                 {"optionText": "Do you have any pets?", "success": "pets"},
                 {"optionText": "What are your thoughts on the innate human morality?", "success": "morality"},
                 {"optionText": "[Next page]", "success": "intro_personal2"}
@@ -117,7 +117,152 @@
             ],
             "options": [
                 {"optionText": "Hardcore!", "success": "hardcore_1"},
+                {"optionText": "[Previous page]", "success": "intro_personal_1"},
                 {"optionText": "[Go back]", "success": "intro"}
+            ]
+        },
+        {
+            "id": "favourites",
+            "content": [
+                {"text": "Red or green. Sashimi. Autumn. Hyenas. Both. Neither. Green tea. Solo trips."}
+            ],
+            "options": [
+                {"optionText": "[Go back]", "success": "intro_personal_1"}
+            ]
+        },
+        {
+            "id": "video_games_1",
+            "content": [
+                {"text": "Sure! Which year would you like to poll from?"},
+                {"text": "I've compiled some lists from recent years, and will continue curating more when I get a chance."}
+            ],
+            "options": [
+                {"optionText": "2024", "success": "video_games_2024"},
+                {"optionText": "2023", "success": "video_games_2023"},
+                {"optionText": "2022", "success": "video_games_2022"},
+                {"optionText": "2021", "success": "video_games_2021"},
+                {"optionText": "2020", "success": "video_games_2020"},
+                {"optionText": "[Next page]", "success": "video_games_2"}
+            ]
+        },
+        {
+            "id": "video_games_2",
+            "content": [
+                {"text": ""}
+            ],
+            "options": [
+                {"optionText": "2019", "success": "video_games_2019"},
+                {"optionText": "[Previous page]", "success": "video_games_1"},
+                {"optionText": "[Go back]", "success": "intro"}
+                
+            ]
+        },
+        {
+            "id": "video_games_2024",
+            "content": [
+                {"text": "Arctic Eggs"},
+                {"text": "Content Warning"},
+                {"text": "Crow Country"},
+                {"text": "Home Safety Hotline"},
+                {"text": "Marvel Rivals"},
+                {"text": "Mouthwashing"},
+                {"text": "Pacific Drive"},
+                {"text": "Slitterhead"},
+                {"text": "Still Wakes the Deep"},
+                {"text": "Webfishing"}
+            ],
+            "options": [
+                {"optionText": "[Go back]", "success": "video_games_1"}
+            ]
+        },
+        {
+            "id": "video_games_2023",
+            "content": [
+                {"text": "Amnesia: The Bunker"},
+                {"text": "Baldur's Gate 3"},
+                {"text": "Chants of Sennar"},
+                {"text": "Dredge"},
+                {"text": "Dress to Impress"},
+                {"text": "Killer Frequency"},
+                {"text": "MyHouse.wad"},
+                {"text": "Slay the Princess"},
+                {"text": "A Space for the Unbound"},
+                {"text": "Stray Gods: The Roleplaying Musical"}
+            ],
+            "options": [
+                {"optionText": "[Go back]", "success": "video_games_1"}
+            ]
+        },
+        {
+            "id": "video_games_2022",
+            "content": [
+                {"text": "Among Us VR"},
+                {"text": "The Case of the Golden Idol"},
+                {"text": "Dorfromantik"},
+                {"text": "How Fish is Made"},
+                {"text": "Iron Lung"},
+                {"text": "Pentiment"},
+                {"text": "Signalis"},
+                {"text": "Teardown"},
+                {"text": "Vampire Survivors"},
+                {"text": "Who's Lila?"}
+            ],
+            "options": [
+                {"optionText": "[Go back]", "success": "video_games_1"}
+            ]
+        },
+        {
+            "id": "video_games_2021",
+            "content": [
+                {"text": "Eastward"},
+                {"text": "Inscryption"},
+                {"text": "It Takes Two"},
+                {"text": "Loop Hero"},
+                {"text": "Mundaun"},
+                {"text": "Resident Evil Village"},
+                {"text": "Sable"},
+                {"text": "Space Warlord Organ Trading Simulator"},
+                {"text": "Super Auto Pets"},
+                {"text": "Toem"}
+            ],
+            "options": [
+                {"optionText": "[Go back]", "success": "video_games_1"}
+            ]
+        },
+        {
+            "id": "video_games_2020",
+            "content": [
+                {"text": "BPM: Bullets Per Minute"},
+                {"text": "Carrion"},
+                {"text": "Deep Rock Galactic"},
+                {"text": "Doom Eternal"},
+                {"text": "Factorio"},
+                {"text": "Hades"},
+                {"text": "In Other Waters"},
+                {"text": "Kentucky Route Zero"},
+                {"text": "Noita"},
+                {"text": "Omori"}
+            ],
+            "options": [
+                {"optionText": "[Go back]", "success": "video_games_1"}
+            ]
+        },
+        {
+            "id": "video_games_2019",
+            "content": [
+                {"text": "Beat Saber"},
+                {"text": "Devil May Cry 5"},
+                {"text": "Disco Elysium"},
+                {"text": "Don't Escape: 4 Days to Survive"},
+                {"text": "Hypnospace Outlaw"},
+                {"text": "Jump King"},
+                {"text": "Manifold Garden"},
+                {"text": "No Players Online"},
+                {"text": "Sekiro: Shadows Die Twice"},
+                {"text": "Slay the Spire"}
+            ],
+            "options": [
+                {"optionText": "[Go back]", "success": "video_games_1"}
             ]
         }
     ]

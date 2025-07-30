@@ -4,6 +4,8 @@ import gearAudio from './assets/gear.wav';
 import clickAudio from './assets/click.ogg';
 import keyPressAudio from './assets/keyPress.ogg';
 import tapAudio from './assets/ceramicTap.wav';
+import corkscrew from './assets/corkscrewTap.wav';
+import vhs from './assets/vhsEject.wav';
 import dialogueJson from './dialogue.json';
 import profilesJson from './profiles.json';
 import type { Dialogue, Profile } from "./Dialogue";
@@ -12,6 +14,9 @@ import type { Dialogue, Profile } from "./Dialogue";
 
 function App() {
   let textContainer!: HTMLDivElement;
+  let playerRef!: HTMLDivElement;
+  let moveMarkerRef!: HTMLDivElement;
+  let bgRef!: HTMLDivElement;
 
   const [scrollProgress, setScrollProgress] = createSignal<number>(2.5);
   const [portfolioOpen, setPortfolioOpen] = createSignal<boolean>(false);
@@ -28,7 +33,7 @@ function App() {
   const [currentTime, setCurrentTime] = createSignal<string>('');
   const [currentDate, setCurrentDate] = createSignal<Date>(new Date());
   const [needTimeUpdate, setNeedTimeUpdate] = createSignal<boolean>(true);
-
+  const [adventureActive, setAdventureActive] = createSignal<boolean>(false);
 
   createEffect(() => {
     if (needTimeUpdate()) {
@@ -69,6 +74,8 @@ function App() {
   let clickAudioComponent!: HTMLAudioElement;
   let keyPressAudioComponent!: HTMLAudioElement;
   let tapAudioComponent!: HTMLAudioElement;
+  let corkscrewAudio!: HTMLAudioElement;
+  let vhsAudio!: HTMLAudioElement;
 
   const barks = [
     'hey',
@@ -130,21 +137,47 @@ function App() {
         <audio ref={clickAudioComponent} src={clickAudio} />
         <audio ref={keyPressAudioComponent} src={keyPressAudio} />
         <audio ref={tapAudioComponent} src={tapAudio} />
+        <audio ref={corkscrewAudio} src={corkscrew} /> {/*chick - corkscrew.wav by vitriolix -- https://freesound.org/s/779/ -- License: Attribution NonCommercial 4.0*/}
+        <audio ref={vhsAudio} src={vhs} /> {/*VHS - Insert/Play/Eject by degoose -- https://freesound.org/s/580911/ -- License: Attribution 4.0*/}
         <div class='w-full h-full flex items-center justify-center bg-black'>
           <Show when={!currentDialogue()[0].id.includes('tutorial')}>
-            <div class='w-full h-full flex items-center justify-center'> {/* TODO: Mask this div if necessary */}
-              <div class='w-full h-full mt-[40%] flex items-center justify-center origin-center scale-x-225'>
-                <div class='w-[75vh] h-3/4 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center' style={{
-                  'background-image': "url('../src/assets/grass.jpg')",
-                }}/>
+            <div ref={bgRef}  class='absolute w-full h-full flex items-center justify-center'> {/* TODO: Mask this div if necessary */}
+              <div class='w-full h-full mt-[35%] flex items-center justify-center origin-center scale-x-225' onclick={async (e) => {
+                if (!adventureActive()) return;
+                moveMarkerRef.style.left = e.clientX - 4+'px';
+                moveMarkerRef.style.top = e.clientY - 8+'px';
+                moveMarkerRef.style.opacity = '100%';
+                const flashMarker = [
+                  {opacity: 0}
+                ];
+
+                const movePlayer = [
+                  {transform: `translate(${e.clientX - playerRef.getBoundingClientRect().left - playerRef.getBoundingClientRect().width/2}px, ${e.clientY - playerRef.getBoundingClientRect().top-playerRef.getBoundingClientRect().height}px)`}
+                ];
+                const moveTiming = {
+                  duration: 1000,
+                  iterations: 1,
+                }
+                playerRef.animate(movePlayer, moveTiming);
+                moveMarkerRef.animate(flashMarker, moveTiming);
+
+                setTimeout(() => {
+                  playerRef.style.left = e.clientX-playerRef.getBoundingClientRect().width/2+'px';
+                  playerRef.style.top = e.clientY-playerRef.getBoundingClientRect().height+'px';
+                  moveMarkerRef.style.opacity = '0%';
+                }, 1000);
+              }}>
+                <div class='w-1/2 h-3/4 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center'/>
               </div>
-              <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain -skew-y-24 mr-[50vw] mb-[6.5%]' style={{
-                'background-image': "url('../src/assets/brickWall.jpg')",
-              }}/>
-              <div class='absolute w-1/2 h-1/3 bg-bottom bg-repeat-x bg-contain skew-y-24 ml-[50vw] mb-[6.5%]' style={{
-                'background-image': "url('../src/assets/fence.png')",
-              }}/>
+              <div class='absolute w-1/2 h-1/3 bg-neutral-400 bg-bottom bg-repeat-x bg-contain -skew-y-24 mr-[50%] mb-[6.5%]'/>
+              <div class='absolute w-1/2 h-1/3 bg-neutral-200 bg-bottom bg-repeat-x bg-contain skew-y-24 ml-[50%] mb-[6.5%]'/>
             </div>
+            <Show when={adventureActive()}>
+              <div ref={moveMarkerRef} class='absolute w-2 h-2 rounded-full text-white opacity-0'>
+                <i class='ph-bold ph-caret-down'/>
+              </div>
+              <div ref={playerRef} class='origin-center absolute w-[2%] h-[10%] bg-neutral-800 flex rounded-full overflow-visible'/>
+            </Show>
           </Show>
         </div>
         <div class='absolute flex flex-row left-0 top-0 p-4 text-neutral-600 text-4xl items-center justify-center'>
@@ -253,6 +286,10 @@ function App() {
                 {
                   (option, index) =>
                     <div class='flex flex-row font-serif text-orange-400 hover:text-orange-200 pb-2' onclick={() => {
+                      if (audioOn()) {
+                        corkscrewAudio.volume = 0.8;
+                        corkscrewAudio.play();
+                      }
                       // TODO: Actually roll and set success/failure depending on difficulty, if difficulty has a value
                       const result = dialogueDictionary().get(option.success);
                       if (option.success === 'intro') {
@@ -289,11 +326,17 @@ function App() {
               </For>
               <Show when={currentDialogue()[currentDialogue().length - 1].options.length === 0}>
                 <div class='flex flex-row text-white text-2xl bg-red-800 pl-4 pt-2 mt-2 items-center' onclick={() => {
-                  // Default state after tutorial
-                  const intro = dialogueDictionary().get('intro');
-                  if (!intro) return;
-                  setCurrentDialogue([intro]);
-                  setNpcPfp('');
+                  if (audioOn()) {
+                    vhsAudio.volume = 0.8;
+                    vhsAudio.play();
+                  }
+                  setTimeout(() => {
+                    // Default state after tutorial
+                    const intro = dialogueDictionary().get('intro');
+                    if (!intro) return;
+                    setCurrentDialogue([intro]);
+                    setNpcPfp('');
+                  }, audioOn() ? 2000 : 0);
                 }}>
                   CONTINUE
                   <i class='ph-bold ph-caret-right pl-1 pt-1' />
