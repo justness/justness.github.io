@@ -442,8 +442,34 @@ function App() {
             <div class='absolute w-100 -rotate-90 rotate-x-180 text-3xl text-neutral-700 right-[-22%] -top-10'>
               CONTACT ME
             </div>
-            <div class='w-full h-full bg-neutral-800/90 flex flex-col items-center justify-center px-8 border-x-14 border-neutral-600/50'>
+            <div class='w-full h-full bg-neutral-800/90 flex flex-col items-start justify-start pt-[25%] px-8 border-x-14 border-neutral-600/50 text-neutral-400 text-4xl'>
               {/* TODO: Set up page contents */}
+              <div class='pb-8 flex flex-col items-start'>
+                Get in touch
+                <div class='flex flex-row text-lg text-neutral-500 items-center'>
+                  <i class='ph-duotone ph-map-pin-area pr-1' />
+                  Toronto, Canada
+                </div>
+              </div>
+              <div class='text-lg pb-8 text-neutral-500'>
+                Got project ideas or common interests? Let's connect!
+              </div>
+              <div class='flex flex-row items-start'>
+                <i class='ph-duotone ph-envelope-simple mr-2 text-neutral-600 hover:text-neutral-500 text-6xl' onclick={() => {
+                  navigator.clipboard.writeText('vanessa.chu@mail.mcgill.ca');
+                }}/>
+                <a href='https://www.linkedin.com/in/v-chu/' target='_blank' class='cursor-default mr-2' onclick={() => {
+                  if (audioOn()) {
+                    clickAudioComponent.volume = 0.1;
+                    clickAudioComponent.play();
+                  }
+                }}>
+                  <i class='ph-duotone ph-linkedin-logo text-neutral-600 hover:text-neutral-500 text-6xl'/>
+                </a>
+                <i class='ph-duotone ph-discord-logo text-neutral-600 hover:text-neutral-500 text-6xl' onclick={() => {
+                  navigator.clipboard.writeText('gnehss');
+                }}/>
+              </div>
             </div>
           </div>
         </Show>
