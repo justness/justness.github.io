@@ -388,17 +388,6 @@ function App() {
             </div>
           </div>
           <div class='absolute flex flex-row w-1/5 h-1/12 bottom-0 right-1/6 bg-neutral-800/90 border-t-8 border-neutral-600 items-center justify-center text-4xl'>
-            {/* <div class={`mr-12 ${!portfolioOpen() && !contactOpen() && !resumeOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
-              setPortfolioOpen(false);
-              setContactOpen(false);
-              setResumeOpen(false);
-              if (audioOn()) {
-                clickAudioComponent.volume = 0.1;
-                clickAudioComponent.play();
-              }
-            }}>
-              <i class='ph-duotone ph-house'/>
-            </div> */}
             <div class={`mr-12 ${resumeOpen() ? 'text-neutral-400' : 'text-neutral-600 hover:text-neutral-500'}`} onclick={() => {
               setResumeOpen(!resumeOpen());
               setPortfolioOpen(false);
@@ -435,7 +424,7 @@ function App() {
           </div>
         </Show>
         <Show when={contactOpen()}>
-          <div class='absolute w-2/5 h-full flex items-center justify-center'>
+          <div class='absolute w-2/5 left-1/8 h-full flex items-center justify-center'>
             <div class='relative mt-[-90vh] mr-2 w-12 h-12 flex items-center justify-center'>
               <div class='flex flex-col group items-center justify-center text-neutral-600 hover:text-neutral-500' onclick={() => {
                 setContactOpen(false);
@@ -459,7 +448,7 @@ function App() {
           </div>
         </Show>
         <Show when={portfolioOpen()}>
-          <div class='absolute w-2/5 h-full flex items-center justify-center'>
+          <div class='absolute w-2/5 left-1/8 h-full flex items-center justify-center'>
             <div class='relative mt-[-90vh] mr-2 w-12 h-12 flex items-center justify-center'>
               <div class='flex flex-col group items-center justify-center text-neutral-600 hover:text-neutral-500' onclick={() => {
                 setPortfolioOpen(false);
@@ -483,7 +472,7 @@ function App() {
           </div>
         </Show>
         <Show when={resumeOpen()} >
-          <div class='absolute w-2/5 h-full flex items-center justify-center'>
+          <div class='absolute w-2/5 left-1/8 h-full flex items-center justify-center'>
             <div class='relative mt-[-90vh] mr-2 w-12 h-12 flex items-center justify-center'>
               <div class='flex flex-col group items-center justify-center text-neutral-600 hover:text-neutral-500' onclick={() => {
                 setResumeOpen(false);
@@ -545,7 +534,7 @@ function App() {
               </div>
             </a>
             <div class='w-full h-full bg-neutral-800/90 flex flex-col items-center justify-center px-8 border-x-14 border-neutral-600/50'>
-              <img src='../src/assets/resumeGT.png' class='max-w-full h-14/15 pb-4' />
+              <img src='../src/assets/resumeGT.png' class='max-w-full h-14/15 pb-4' draggable={false} />
               <div class='flex flex-row text-4xl'>
                 <a href='https://www.linkedin.com/in/v-chu/' target='_blank' class='cursor-default' onclick={() => {
                   if (audioOn()) {
