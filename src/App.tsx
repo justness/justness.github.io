@@ -167,10 +167,12 @@ function App() {
                   moveMarkerRef.style.opacity = '0%';
                 }, 1000);
               }}>
-                <div class='w-1/2 h-3/4 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center'/>
+                <div class='xl:w-200 xl:h-200 lg:w-120 lg:h-120 bg-neutral-600 bg-center bg-repeat bg-auto rotate-45 origin-center'/>
               </div>
-              <div class='absolute w-1/2 h-1/3 bg-neutral-400 bg-bottom bg-repeat-x bg-contain -skew-y-24 mr-[50%] mb-[6.5%]'/>
-              <div class='absolute w-1/2 h-1/3 bg-neutral-200 bg-bottom bg-repeat-x bg-contain skew-y-24 ml-[50%] mb-[6.5%]'/>
+              <div class='absolute w-full h-full justify-center items-center flex'>
+                <div class='w-240 xl:h-75 lg:h-60 bg-neutral-400 bg-bottom bg-repeat-x bg-contain -skew-y-24 mb-[6.5%]'/>
+                <div class='w-240 xl:h-75 lg:h-60 bg-neutral-200 bg-bottom bg-repeat-x bg-contain skew-y-24 mb-[6.5%]'/>
+              </div>
             </div>
             <Show when={adventureActive()}>
               <div ref={moveMarkerRef} class='absolute w-2 h-2 rounded-full text-white opacity-0'>
@@ -256,7 +258,7 @@ function App() {
         {/* <div class='absolute flex w-1/12 h-1/4 left-1/11 bottom-0 border-14 border-neutral-800/90 items-center justify-center text-red-400'>
           Cats pic
         </div> */}
-        <div class={`absolute w-1/4 h-9/10 right-1/10 ${!currentDialogue()[0].id.includes('tutorial') && 'bg-neutral-800/90 border-14 border-t-0 border-neutral-400/50 border-b-8 border-b-neutral-600'} px-16 py-36`}>
+        <div class={`absolute xl:w-1/4 lg:w-1/3 h-9/10 lg:right-1/10 lg:mx-0 mx-[10vw] ${!currentDialogue()[0].id.includes('tutorial') && 'bg-neutral-800/90 border-14 border-t-0 border-neutral-400/50 border-b-8 border-b-neutral-600'} px-16 py-36`}>
           {/* TODO: Replace placeholder image */}
           <Show when={npcPfp().length > 0}>
             <div title='https://picrew.me/ja/image_maker/197705' class='absolute bg-clip-content bg-no-repeat bg-cover bg-center bg-lime-950 start-[-25%] w-1/3 h-1/4 border-14 border-neutral-900' style={{
@@ -448,7 +450,7 @@ function App() {
                 Get in touch
                 <div class='flex flex-row text-lg text-neutral-500 items-center'>
                   <i class='ph-duotone ph-map-pin-area pr-1' />
-                  Toronto, Canada
+                  Hamilton, Canada
                 </div>
               </div>
               <div class='text-lg pb-8 text-neutral-500'>
