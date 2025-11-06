@@ -141,7 +141,7 @@ function App() {
         <audio ref={vhsAudio} src={vhs} /> {/*VHS - Insert/Play/Eject by degoose -- https://freesound.org/s/580911/ -- License: Attribution 4.0*/}
         <div class='w-full h-full flex items-center justify-center bg-black'>
           <Show when={!currentDialogue()[0].id.includes('tutorial')}>
-            <div ref={bgRef}  class='absolute w-full h-full flex items-center justify-center'> {/* TODO: Mask this div if necessary */}
+            <div ref={bgRef}  class='absolute w-full h-full flex items-center justify-center overflow-hidden'> {/* TODO: Mask this div if necessary */}
               <div class='w-full h-full mt-[35%] flex items-center justify-center origin-center scale-x-225' onclick={async (e) => {
                 if (!adventureActive()) return;
                 moveMarkerRef.style.left = e.clientX - 4+'px';
