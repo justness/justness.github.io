@@ -232,7 +232,7 @@ function App() {
         </Show>
         {/* TODO: Replace placeholder image */}
         <Show when={!currentDialogue()[0].id.includes('tutorial')} >
-          <div title='https://picrew.me/ja/image_maker/197705' class='absolute flex bg-clip-content bg-no-repeat bg-cover bg-center bg-orange-300 w-1/12 h-1/4 rotate-y-180 left-0 bottom-0 border-14 border-neutral-800/90 items-center justify-center text-red-400' style={{
+          <div title='https://picrew.me/ja/image_maker/197705' class='sm:hidden md:hidden lg:flex absolute bg-clip-content bg-no-repeat bg-cover bg-center bg-orange-300 w-1/12 h-1/4 rotate-y-180 left-0 bottom-0 border-14 border-neutral-800/90 items-center justify-center text-red-400' style={{
             'background-image': "url('../src/assets/pfp.png')",
           }} onclick={() => {
             if (audioOn()) {
